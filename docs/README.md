@@ -88,7 +88,8 @@ A linear, narrative, regression-driven murim RPG for **Unreal Engine 5**.
 7. **Path sets language, not just tone** (D-011)
 8. **Every loop yields durable progress** — no wasted loops
 9. **Every act is completable at Tier I** with the expected technique set
-10. **Any new system declares its persistence row before implementation**
+10. **One base moveset per weapon.** A new style costs ≤5 clips (D-012)
+11. **Any new system declares its persistence row before implementation**
 
 ---
 
@@ -106,6 +107,6 @@ A linear, narrative, regression-driven murim RPG for **Unreal Engine 5**.
 | Acts 2–5 | **To author** (Q-04) |
 | Combat | Specified; posture unconfirmed (Q-03) |
 | Character voice | Model locked (D-011); coverage budget open (Q-02) |
-| Animation budget | **Unresolved production risk** (Q-16) |
+| Animation model | **Locked** (D-012); weapon count for v1 open (Q-16) |
 | Progression & economy | **Deferred** (D-004) |
 | UE5 project | **Not started** — repo still holds the abandoned Unity project (Q-17) |

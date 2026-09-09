@@ -8,6 +8,49 @@ mark the old entry `SUPERSEDED BY D-xxx` and write a new entry.
 
 ---
 
+## D-012 — One base moveset per weapon; styles are thin layers on top
+**Status:** Locked. Narrows Q-16.
+
+Animation is authored as **one base moveset per weapon** (including unarmed),
+with each martial style layering only a small signature set on top.
+
+| Layer | Scope | Cost |
+|---|---|---|
+| **Weapon base set** | Locomotion, light combo, heavies, dodges, guard, parry, hit reactions, stagger, death | ~40–60 clips per weapon |
+| **Style signature set** | 3–5 clips: a signature finisher, a signature heavy, one or two style-defining specials | ~4 clips per style |
+| **Non-animation differentiation** | Timing curves, VFX and aura, hit-stop weight, audio, trails, finisher camera | Near-free |
+
+**Hard constraint:** a new style must cost **five new clips or fewer**. A style
+concept that needs a full moveset is not a style — it is a weapon, and it is
+budgeted as one.
+
+**Rules:**
+- Styles may *replace* base clips; they never require the base to be
+  re-authored
+- All humanoids share one skeleton; animation retargets across characters
+- **Enemy archetypes draw from the same weapon base sets.** An archetype costs
+  only its unique moves
+- Most of the felt difference between styles comes from the non-animation
+  layer. Budget attention there before adding clips
+
+**Honest accounting.** This is not a large saving at the current scope. Six
+styles across five weapons costs roughly five bases plus six signature sets
+(~274 clips) against six full movesets (~300) — about 10%. The model pays off
+in two other places, and those are the reasons to adopt it:
+
+1. **Every additional style costs ~4 clips instead of ~50.** The faction design
+   implies many more styles than six; without this model, each one is months
+2. **Enemy archetypes reuse the weapon bases**, which is where the larger half
+   of the total budget lives
+
+**The remaining cost driver is weapon count**, not style count. That is still
+open — see Q-16.
+
+**Revisit** if a style proves undifferentiated in play and the non-animation
+layer cannot carry it.
+
+---
+
 ## D-011 — Path sets language, not just tone
 **Status:** Locked
 

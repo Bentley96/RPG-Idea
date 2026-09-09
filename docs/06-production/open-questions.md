@@ -9,7 +9,7 @@ it from here.
 **Recently resolved:** Q-01 anchor advance → **D-010** · Q-11 unaligned ending
 → **D-009** (conviction axis, four endings) · Q-12 mentor rank → **D-008**
 (Core Refinement, Tier III) · Q-02 delivery model → **D-011** (budget still
-open below).
+open below) · Q-16 animation model → **D-012** (narrowed to weapon count).
 
 ---
 
@@ -123,61 +123,32 @@ that the protagonist is regressing. A major narrative fork.
 
 ## Production risk
 
-### Q-16 — Animation budget
-**Doc:** `docs/03-systems/combat.md`
+### Q-16 — Weapon count for v1
+**Doc:** `docs/03-systems/combat.md`, **D-012**
 
-**The single most likely thing to sink this project.** Not because it is hard,
-but because the cost is invisible at design time and enormous at production
-time: writing "six sect styles" takes ten seconds and builds in years of work.
+The animation *model* is settled (**D-012**): one base moveset per weapon,
+styles layered on top at ≤5 clips each, enemy archetypes reusing the weapon
+bases. What remains open is the **weapon count**, which is now the dominant
+cost driver.
 
-**The arithmetic.** Every distinct action a character can perform needs an
-animation clip — hand-keyed or motion-captured movement data, not code. One
-weapon with one style needs roughly:
+Each weapon base is ~40–60 clips and cannot be shared across weapon types. Five
+weapons is ~250 clips before a single style or enemy exists. At an indie rate
+of one to three good clips a day that is still the largest single line item in
+the project.
 
-| Category | Clips |
-|---|---|
-| Light combo string | 4–5 |
-| Heavy attacks | 2–3 |
-| Sprint / dash attacks | 2 |
-| Parry, parry success, block idle / impact / break | 5 |
-| Dodges, directional | 4 |
-| Hit reactions, light and heavy × 4 directions | 8 |
-| Stagger, knockdown, get-up | 3–4 |
-| Death | 1–2 |
-| Locomotion — idle, walk, run, turn, jump, land | 8–10 |
-| Signature style techniques | 3–5 |
-| **Total, one weapon-style pairing** | **~40–60** |
+| v1 weapon count | Base clips | Styles reachable |
+|---|---|---|
+| 1 — unarmed | ~50 | Sorim Vajra Fist |
+| 2 — unarmed + sword | ~100 | + Mount Hua, Mudang |
+| 5 — all | ~250 | All six |
 
-The design lists **six weapon-style pairings**, so the player alone is roughly
-**250–350 clips**. Every enemy archetype needs its own moveset — call it 30
-clips each, and fifteen archetypes is another **450**. The full vision is
-**700–1000+ clips**.
+The vertical slice is unarmed only, which defers the decision without
+answering it. **Decide before Act 2 content begins**, since weapon availability
+shapes encounter and reward design.
 
-At an indie rate of one to three good clips a day, that is multiple years of
-animation work alone.
-
-**Why it is worse here than in most genres.** A martial arts game *is* its
-animation. The entire fantasy is beautiful movement, and stiff or mismatched
-animation reads as cheap instantly — you cannot hide it behind systems or
-level design the way a shooter can. Six martial arts styles that do not each
-look distinctly and correctly themselves are worse than two that do.
-
-**Mitigations, roughly in order of value:**
-
-1. **Shared base moveset per weapon + 3–5 signature techniques per style.**
-   Turns six full movesets into one base plus six small sets. This is the
-   practical answer and it should be the default assumption
-2. **Differentiate by timing, VFX and follow-through** rather than wholly
-   unique clips — same underlying swing, different aura, tempo and recovery
-   gets "feels different" for perhaps 30% of the cost
-3. **Cut to one or two weapons for v1.** The vertical slice already does this
-4. **Buy a coherent mocap library from a single vendor** so styles at least
-   match each other stylistically
-5. **Share skeletons and retarget** across all humanoid characters
-
-**The decision needed:** commit to the shared-base model now, or accept the
-full per-style cost and cut the style count to what that budget actually buys.
-Deferring this decision does not make it cheaper.
+Standing caution: a martial arts game *is* its animation — the whole fantasy is
+beautiful movement, and stiff or mismatched work reads as cheap instantly. Two
+weapons that look correct beat five that do not.
 
 ### Q-17 — Repository migration
 **Doc:** `docs/04-technical/migration-from-unity.md`

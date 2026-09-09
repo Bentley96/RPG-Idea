@@ -22,7 +22,7 @@ will save the project.
 |---|---|
 | **One anchor** | The alley. The bullies. Act 1's fixed anchor |
 | **One mentor sequence** | Compressed. Enough to teach fundamentals and establish his ordinariness |
-| **One weapon** | Unarmed. No weapon-switching, no styles |
+| **One weapon** | Unarmed. No weapon-switching, no styles. This builds the **unarmed base moveset** (D-012), which is the template every later weapon copies — author it as a reusable base, not as a one-off |
 | **Three enemy archetypes** | Bully (trivial), competent fighter (real), the cultivator (unwinnable) |
 | **Core combat** | Light, heavy, guard, parry, dodge, lock-on. Posture if confirmed |
 | **The authored death** | The cultivator. Scripted, unwinnable, legible |

@@ -54,6 +54,9 @@ These are not preferences.
   or a drift shift
 - **Any new system must declare its row in the persistence matrix before it is
   implemented.** A system with undefined persistence behaviour must not be built
+- **One base moveset per weapon; styles layer on top at ≤5 clips each**
+  (D-012). A concept needing a full moveset is a weapon, not a style. Enemy
+  archetypes reuse the weapon bases
 - Do not invent progression numbers. Economy work is deferred (D-004)
 
 **Engine**

@@ -142,9 +142,9 @@ shipped content.
 
 ## Weapons and styles
 
-The prototype defined 5 weapon types and 6 sect styles. The structure is sound
-and carries over, but the **content is out of scope for the vertical slice**
-(`docs/06-production/vertical-slice.md`).
+Five weapon types, six sect styles. Structure carries over from the prototype;
+**content is out of scope for the vertical slice**
+(`docs/06-production/vertical-slice.md`), which is unarmed only.
 
 | Weapon | Styles it enables |
 |---|---|
@@ -156,13 +156,80 @@ and carries over, but the **content is out of scope for the vertical slice**
 
 Styles are **techniques**, so they persist across loops
 (`docs/02-loop/persistence-matrix.md`). Weapons are **items**, so they do not —
-the player must re-acquire the blade each loop, but they never forget how to
-use it. Knowing exactly where to find a sword on day one is a knowledge flag,
-and a good one.
+the player re-acquires the blade each loop but never forgets how to use it.
+Knowing exactly where to find a sword on day one is a knowledge flag, and a
+good one.
 
-> **Scope warning.** 5 weapons × 6 styles × full movelists is an enormous
-> animation budget and is the most likely thing to sink this project. See
-> `docs/06-production/open-questions.md`.
+---
+
+## Animation model
+
+Per **D-012**: **one base moveset per weapon, styles layered thinly on top.**
+
+### Weapon base set — ~40–60 clips
+
+Authored once per weapon, including unarmed. Shared by the player and by every
+enemy archetype using that weapon.
+
+| Category | Clips |
+|---|---|
+| Locomotion — idle, walk, run, sprint, turn, jump, land | 8–10 |
+| Light combo string | 4–5 |
+| Heavy attacks | 2–3 |
+| Sprint / dash attack | 2 |
+| Dodges, directional | 4 |
+| Guard — idle, impact, break | 3 |
+| Parry — attempt, success | 2 |
+| Hit reactions — light and heavy × 4 directions | 8 |
+| Stagger, knockdown, get-up | 3–4 |
+| Death | 1–2 |
+
+### Style signature set — 3–5 clips
+
+| Clip | Purpose |
+|---|---|
+| Signature finisher | Replaces the base combo ender |
+| Signature heavy | Replaces or adds to the base heavy |
+| One or two specials | The move the style is *known* for |
+| Optional stance idle | Silhouette recognition |
+
+> **Hard constraint:** a new style costs **five new clips or fewer**. A concept
+> needing a full moveset is not a style — it is a weapon, and it is budgeted as
+> one.
+
+### Non-animation differentiation
+
+This is where most of the felt difference comes from, and it is close to free.
+Budget attention here before adding clips.
+
+| Lever | Example |
+|---|---|
+| Timing curves | Mudang slow and circular; Peng heavy and committed — same clip, different play rate and recovery |
+| VFX and aura | Plum blossoms for Mount Hua; tiger imagery for Peng; shadow smear for Hao |
+| Hit-stop weight | Saber lands heavy; dagger lands light and fast |
+| Audio | Distinct impact and whoosh layers per style |
+| Trails and afterimages | Shape and colour of the weapon trail |
+| Finisher camera | Framing and shake on signature moves |
+
+### Rules
+
+- Styles may **replace** base clips; they never require the base to be
+  re-authored
+- All humanoids share **one skeleton**; animation retargets across characters
+- **Enemy archetypes draw from the weapon base sets.** An archetype costs only
+  its unique moves — this is where the larger half of the total budget lives
+- Signature clips are authored against the base set's timing, so they slot in
+  without re-tuning the combo
+
+### Where this does and does not help
+
+At the current scope the saving is modest: five bases plus six signature sets
+(~274 clips) against six full movesets (~300). The model is adopted for two
+other reasons — each *additional* style costs ~4 clips instead of ~50, and
+enemy archetypes reuse the bases.
+
+**The remaining cost driver is weapon count, not style count.** See Q-16 in
+`docs/06-production/open-questions.md`.
 
 ---
 
