@@ -81,6 +81,7 @@ depends on those rules being learnable.
 | Confidence | ◐ | Persistent floor from lifetime peak realm, plus a current-loop component. See `docs/01-narrative/character-axes.md` |
 | Path drift | ● | Cumulative across all loops (D-006, **D-009**) |
 | Conviction | ● | Monotonic. Never decreases (**D-009**) |
+| Act testaments | ● | Permanent path record per act close. Never revised (**D-013**) |
 
 ### World
 
@@ -113,6 +114,7 @@ depends on those rules being learnable.
 | Anchor position | ● | Advances only when the player chooses, irreversibly (**D-010**) |
 | Abandoned content | ● | Content behind an advanced anchor stays permanently inaccessible |
 | Act / story progress | ● | Story does not rewind with the world |
+| Current act | ● | Testaments are taken at act close, not loop end |
 | Settings, accessibility | ● | |
 
 ---

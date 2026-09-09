@@ -8,6 +8,81 @@ mark the old entry `SUPERSEDED BY D-xxx` and write a new entry.
 
 ---
 
+## D-013 — Act testaments: the ending is a trajectory, not a position
+**Status:** Locked. Resolves Q-18. Amends D-009.
+
+At the close of each act the world takes a **testament** — a permanent record
+of the protagonist's path standing at that moment. The ending is determined by
+the **sequence** of testaments, not by the final value alone.
+
+### Two things happen at an act close, and they are separable
+
+| Event | Automatic? | Reversible? |
+|---|---|---|
+| **Testament taken** — path standing recorded | **Always.** Not a choice | **Never** |
+| **Anchor advance offered** — abandon the past, set a later anchor | Player's choice (**D-010**) | Never, once taken |
+
+Keeping these separate matters: a player who declines the anchor advance still
+has their testament taken. The testament is a story event; the advance is a
+decision.
+
+### Testament values
+
+| Value | Condition |
+|---|---|
+| **Orthodox** | Drift in the orthodox band, sufficient conviction |
+| **Unorthodox** | Drift near centre, sufficient conviction |
+| **Demonic** | Drift in the demonic band, sufficient conviction |
+| **Unrecorded** | Conviction below threshold — the murim never named you |
+
+### Testaments do not constrain drift
+
+A testament records who you were; it does not lock what you may become. Drift
+and conviction continue moving freely afterward.
+
+"Locked in" means the **record** is locked, permanently. This is the one thing
+about their past the protagonist can never return and revise — which sits
+directly alongside the anchor advance, where they can never return at all. Both
+mechanics are the past becoming fixed, and they fire at the same moment.
+
+### Ending selection
+
+**Final standing chooses the ending. Trajectory chooses its framing.**
+
+| Trajectory shape | Pattern | Reads as |
+|---|---|---|
+| **Steadfast** | A → A → A | Never wavered |
+| **Convert** | A → A → B, or A → B → B | Changed once, and stayed changed |
+| **Returned** | A → B → A | Left the road and came back to it |
+| **Wanderer** | A → B → C | Never belonged anywhere |
+
+Four core endings (**D-009**: Martial God, Sole Sovereign, Heavenly Demon, The
+Hollow), each with trajectory-driven framing — a different epilogue, a
+different closing tone, and different figures from the protagonist's past
+appearing to speak to it.
+
+**Authored cost is bounded deliberately:** four full ending sequences, roughly
+four epilogue variants each. Trajectory never produces a wholly separate
+ending; it reframes one.
+
+### Content leverage
+
+Testaments are cheap, high-value content hooks. NPCs, factions and the epilogue
+can reference what the murim recorded of you in an earlier act — *"You were one
+of the righteous, once"* — for the cost of a conditional line.
+
+### Act structure
+
+This locks the game at **three acts** (provisional), with testaments at the
+close of Acts 1, 2 and 3. The earlier five-act scaffold is collapsed
+accordingly. Anchor advance is offered at the close of Acts 1 and 2; mid-act
+anchors are dropped for now.
+
+See `docs/03-systems/paths-and-drift.md` and
+`docs/02-loop/loop-architecture.md`.
+
+---
+
 ## D-012 — One base moveset per weapon; styles are thin layers on top
 **Status:** Locked. Narrows Q-16.
 
@@ -103,6 +178,7 @@ See `docs/02-loop/loop-architecture.md` §3.
 
 ## D-009 — Three paths, plus a conviction axis
 **Status:** Locked. Amends D-006. Resolves Q-11.
+**Amended by D-013** — ending selection now reads the testament trajectory, not the final drift value alone.
 
 Unorthodox (사파) is a **distinct third path**, not a midpoint of nothing and
 not a weaker Demonic. Sapa are pragmatic, profit-driven and morally grey; Magyo

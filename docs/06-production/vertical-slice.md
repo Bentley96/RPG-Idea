@@ -36,7 +36,7 @@ will save the project.
 
 Explicitly deferred. Do not build these for the slice.
 
-- Acts 2–5, and any faction content
+- Acts 2 and 3, and any faction content
 - The other four weapons and all six sect styles
 - Cultivation levelling past what Act 1 needs — **the slice may not need
   levelling at all**, since Act 1's premise is a skilled fighter with an empty core

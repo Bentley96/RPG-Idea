@@ -17,11 +17,16 @@ banned synonym, the banned form is listed — do not use it anywhere.
 | **Regression Interlude** | The between-lives sequence where losses, retentions and gains are shown | Reincarnation Sanctum, death screen |
 | **Loop counter** | Monotonic count of lives lived. Never resets | Generation number |
 | **Knowledge flag** | A persistent record that the protagonist knows a specific fact | — |
+| **Testament** | The permanent record of the protagonist's path standing, taken at each act close (**D-013**) | Checkpoint, alignment lock |
+| **Trajectory** | The sequence of testaments across all acts. Frames the ending | — |
 | **Frontier** | The portion of a loop that is new content | — |
 | **Recovery** | The portion of a loop that replays known content under acceleration | — |
 
-> In-fiction name for the Regression Interlude is still open — see
-> `docs/06-production/open-questions.md`.
+> In-fiction names for the Regression Interlude and the Testament are still
+> open — see `docs/06-production/open-questions.md`.
+
+**Act structure:** three acts (provisional, **D-013**). Testaments at the close
+of each; anchor advance offered at the close of Acts 1 and 2.
 
 ---
 
@@ -149,6 +154,7 @@ Full detail in `docs/05-world/murim-factions.md`.
 | **Knowledge flag** | A known fact about the world | **Yes** |
 | **Path drift** | Position on the Orthodox ↔ Demonic axis | **Yes** |
 | **Conviction** | How strongly the protagonist has committed to anything | **Yes** |
+| **Testament** | Path standing recorded at an act close. Four values: Orthodox, Unorthodox, Demonic, Unrecorded | **Yes** |
 | **Jadedness** | Rises with loops lived and anchors abandoned | **Yes** |
 | **Confidence** | Rises with realm reached | Partly |
 | **Qi** | Spendable energy within a loop | No |

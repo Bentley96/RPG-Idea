@@ -110,6 +110,23 @@ player replays four acts to reach new content. Unacceptable.
 **Resolution (D-010): the player chooses when to advance the anchor, and the
 choice is irreversible.**
 
+### Two things happen at an act close
+
+They fire at the same moment and are frequently confused. Keep them separate
+(**D-013**):
+
+| Event | Automatic? | Player's choice? |
+|---|---|---|
+| **Testament taken** — path standing permanently recorded | **Always** | No |
+| **Anchor advance offered** — abandon the past, set a later anchor | Offered | **Yes** |
+
+A player who declines the advance still has their testament taken. The
+testament is a story event; the advance is a decision. Testaments are specified
+in `docs/03-systems/paths-and-drift.md`.
+
+Together they are the same statement in two registers: at an act close, part of
+the past stops being reachable, and part of it stops being revisable.
+
 ### Anchor advance
 
 At defined points the player may **abandon their current anchor** and set a
@@ -157,10 +174,12 @@ The player may not advance past Act 1's anchor until Act 1 is complete.
 Returning to the alley and flattening the bullies with technique they know
 nothing about is the game's thesis statement, and it must be experienced.
 
-> **OPEN — anchor point placement.** How many advance points, and where. One
-> per act boundary is the baseline; optional mid-act anchors would give a finer
-> risk/reward dial at the cost of more softlock-safety validation. Tracked in
-> `docs/06-production/open-questions.md`.
+### Placement
+
+Resolved by **D-013**: **one advance point per act boundary.** With three acts
+that is two opportunities — at the close of Act 1 and Act 2. Mid-act anchors
+are dropped; they would multiply softlock-safety validation for a finer dial
+than the game needs.
 
 ---
 
@@ -203,28 +222,37 @@ Act 1 delivers both revelations: *abilities persist and the cycle can be
 exploited*, then *skill alone caps out*. The hunt for cultivation methods
 becomes the engine of the mid-game.
 
+**Closes with:** the first testament, and the first anchor advance opportunity.
+Most players will have low conviction here, so an **Unrecorded** first
+testament is the common case and must read as meaningful rather than as a
+failure — the murim simply has not yet decided what to call you.
+
 ### Act 2 — The Hunt for Qi *(scaffold)*
-Acquiring real cultivation methods. First contact with the faction world. The
-first genuine breakthrough.
+The engine of the mid-game. Acquiring real cultivation methods, first contact
+with the faction world, the first genuine breakthrough, and the beginnings of
+faction entanglement.
 
-> **TO AUTHOR:** which faction, which method, what the wall is, where the
-> anchor advances to.
+**Closes with:** the second testament, and the second and final anchor advance
+opportunity.
 
-### Act 3 — The Sects *(scaffold)*
-Faction entanglement. Sect techniques. Orthodox and unorthodox roads diverge in
-availability, and path drift begins to bite.
+> **TO AUTHOR:** which faction, which method, the wall, and where the anchor
+> advances to.
 
-> **TO AUTHOR.**
+### Act 3 — Divergence & Ascension *(scaffold, final act)*
+Accumulated drift crystallises into path-specific techniques, allies and
+enemies. The campaign resolves into one of four endings, selected by the final
+testament and framed by the trajectory across all three
+(`docs/03-systems/paths-and-drift.md`).
 
-### Act 4 — Divergence *(scaffold)*
-Accumulated drift crystallises. Path-specific techniques, allies and enemies.
-
-> **TO AUTHOR.**
-
-### Act 5 — Ascension *(scaffold)*
-Martial God or Heavenly Demon, selected by accumulated drift (D-006).
+**Closes with:** the final testament, and the ending.
 
 > **TO AUTHOR.**
+
+> **Act count is provisional.** Three acts is the current scope (**D-013**),
+> collapsed from an earlier five-act scaffold. Three is achievable and gives
+> the testament trajectory enough room to read as a trajectory. Adding a fourth
+> act means adding a testament, which multiplies ending framings — do it
+> deliberately, not by drift.
 
 ---
 

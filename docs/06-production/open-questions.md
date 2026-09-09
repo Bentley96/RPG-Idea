@@ -9,14 +9,15 @@ it from here.
 **Recently resolved:** Q-01 anchor advance → **D-010** · Q-11 unaligned ending
 → **D-009** (conviction axis, four endings) · Q-12 mentor rank → **D-008**
 (Core Refinement, Tier III) · Q-02 delivery model → **D-011** (budget still
-open below) · Q-16 animation model → **D-012** (narrowed to weapon count).
+open below) · Q-16 animation model → **D-012** (narrowed to weapon count) ·
+Q-18 anchor placement → **D-013** (one per act boundary, three acts).
 
 ---
 
 ## Blocking — resolve before significant production
 
 ### Q-02 — Voice coverage budget
-**Blocks:** Acts 2–5 writing at scale
+**Blocks:** Acts 2 and 3 writing at scale
 **Doc:** `docs/01-narrative/character-axes.md`
 
 The *how* is resolved (**D-011**): three orthogonal layers — register from
@@ -33,18 +34,6 @@ runtime. Runtime generation is a full technical subsystem — prompting, caching
 latency, cost, offline fallback, tone drift, and no voice acting — not a
 shortcut around the writing budget.
 
-### Q-18 — Anchor point placement
-**Blocks:** act authoring, softlock validation
-**Doc:** `docs/02-loop/loop-architecture.md` §3
-
-The anchor advance mechanic is locked (**D-010**) but the placement is not.
-One advance point per act boundary is the baseline. Optional mid-act anchors
-would give a finer risk/reward dial, at the cost of more softlock-safety
-validation — every anchor must leave the rest of the game completable.
-
-Also open: how the game communicates what is being given up, clearly enough
-that an irreversible choice is fair.
-
 ### Q-03 — Posture as a core system
 **Blocks:** vertical slice combat
 **Doc:** `docs/03-systems/combat.md`
@@ -53,15 +42,29 @@ Recommended and specified, not yet confirmed. Posture is what lets a Tier I
 player with excellent timing break a far stronger opponent — the clearest
 moment-to-moment expression of **D-007**. Needed for the slice.
 
-### Q-04 — Acts 2–5
+### Q-04 — Acts 2 and 3
 **Blocks:** essentially all content work
 **Doc:** `docs/02-loop/loop-architecture.md` §5
 
 Only Act 1 is authored. Each act needs all six answers from the loop checklist:
-anchor, recovery, frontier, wall, durable gain, acknowledgment.
+anchor, recovery, frontier, wall, durable gain, acknowledgment — plus, now,
+what its **testament** means in story terms (**D-013**).
 
-Not urgent for the vertical slice, which is Act 1 only — but it is the largest
-body of undone design work in the project.
+Scope is three acts, collapsed from five. Not urgent for the vertical slice,
+which is Act 1 only, but it is the largest body of undone design work in the
+project.
+
+### Q-19 — Testament thresholds and ending authoring depth
+**Doc:** `docs/03-systems/paths-and-drift.md`
+
+Two sub-questions, both cheap to defer and expensive to get wrong:
+
+1. **Conviction threshold for a recorded testament.** Set too low and every
+   protagonist is named by Act 1; too high and Unrecorded becomes the default
+   and the trajectory system never fires. Needs playtest data
+2. **Epilogue depth per trajectory.** Budget is four endings × ~4 framings.
+   Whether a framing is a few reworded paragraphs or a distinct closing scene
+   is the difference between days and months
 
 ---
 

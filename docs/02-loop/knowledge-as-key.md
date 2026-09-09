@@ -135,7 +135,7 @@ system.
 
 ## Open work
 
-- The full flag catalogue for Acts 2–5, pending those acts being authored
+- The full flag catalogue for Acts 2 and 3, pending those acts being authored
 - Whether knowledge can be *shared* with NPCs, and whether that changes the
   world in ways the player must then manage
 - Whether any antagonist eventually notices the loop

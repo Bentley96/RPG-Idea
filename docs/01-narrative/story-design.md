@@ -161,9 +161,16 @@ persists while cultivation does not, deep commitment to a path makes its
 techniques available *early* in later loops — the body starts over, the nature
 does not.
 
-The ending is selected by accumulated **drift and conviction** at the end of
-the final act — including a fourth outcome for a protagonist who lived many
-lives and committed to nothing. Full system:
+At the close of every act the world takes a **testament** — a permanent record
+of where the protagonist stood at that moment, which they can never return and
+revise. The ending reads the **whole sequence**, not the final value: someone
+who was righteous at the end of Act 1 and pragmatic at the end of Act 2 arrives
+somewhere different from someone who was righteous throughout, even if they
+finish in the same place.
+
+Four endings — Martial God, Sole Sovereign, Heavenly Demon, and The Hollow for
+a protagonist who lived many lives and committed to nothing — each framed by
+the trajectory that reached it. Full system:
 `docs/03-systems/paths-and-drift.md`.
 
 ---
@@ -226,5 +233,6 @@ Binding rules for anyone — human or AI — writing content for this game.
 
 ## Act structure
 
-Act 1 is authored above. Acts 2–5 are scaffolded in
-`docs/02-loop/loop-architecture.md` §5 and remain **to author**.
+**Three acts** (provisional, **D-013**). Act 1 is authored above; Acts 2 and 3
+are scaffolded in `docs/02-loop/loop-architecture.md` §5 and remain **to
+author**. A testament is taken at the close of each.

@@ -46,6 +46,11 @@ These are not preferences.
   they committed)
 - **Anchor advance is player-chosen and irreversible** (D-010). It must never
   make the game unwinnable — every anchor leaves the rest completable
+- **A testament is taken at every act close** (D-013): automatic, permanent,
+  never a player choice. It **records** path standing; it does not constrain
+  future drift. The ending reads the whole trajectory. Do not conflate the
+  testament (automatic) with the anchor advance (chosen) — they fire at the
+  same moment and are separate systems
 - **Path sets diction and register, not just sentiment** (D-011). Voice is
   three orthogonal layers: register (path), affect (jadedness), stance
   (confidence). Never author a line per combination
@@ -139,7 +144,7 @@ in `docs/02-loop/knowledge-as-key.md`.
   and remove it from `open-questions.md`
 - Keep scope tight to the vertical slice
   (`docs/06-production/vertical-slice.md`). It is Act 1, unarmed, three enemy
-  archetypes. Do not build Acts 2–5 content, weapons, styles, pills or
+  archetypes. Do not build Acts 2 and 3 content, weapons, styles, pills or
   breakthroughs into it
 
 ---

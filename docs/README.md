@@ -85,11 +85,13 @@ A linear, narrative, regression-driven murim RPG for **Unreal Engine 5**.
 5. **Three paths.** Orthodox, Unorthodox, Demonic — cumulative drift plus
    conviction, never a choice (D-006, D-009)
 6. **The player chooses when to advance the anchor, and it is irreversible** (D-010)
-7. **Path sets language, not just tone** (D-011)
-8. **Every loop yields durable progress** — no wasted loops
-9. **Every act is completable at Tier I** with the expected technique set
-10. **One base moveset per weapon.** A new style costs ≤5 clips (D-012)
-11. **Any new system declares its persistence row before implementation**
+7. **A testament is taken at every act close.** The ending reads the whole
+   trajectory, not the final standing (D-013)
+8. **Path sets language, not just tone** (D-011)
+9. **Every loop yields durable progress** — no wasted loops
+10. **Every act is completable at Tier I** with the expected technique set
+11. **One base moveset per weapon.** A new style costs ≤5 clips (D-012)
+12. **Any new system declares its persistence row before implementation**
 
 ---
 
@@ -98,13 +100,14 @@ A linear, narrative, regression-driven murim RPG for **Unreal Engine 5**.
 | Area | State |
 |---|---|
 | Core loop design | **Specified** |
-| Anchor advance | **Specified** (D-010); placement open (Q-18) |
+| Anchor advance | **Specified** (D-010); one per act boundary (D-013) |
 | Progression ladders | **Specified** — martial rank + cultivation tier (D-008) |
 | Paths & drift | **Specified** — three paths + conviction (D-009) |
+| Endings | **Specified** — testament trajectory, four endings (D-013) |
 | Persistence rules | **Specified** |
 | Knowledge system | **Specified** |
 | Act 1 | Authored |
-| Acts 2–5 | **To author** (Q-04) |
+| Acts 2 and 3 | **To author** (Q-04). Three-act scope (D-013) |
 | Combat | Specified; posture unconfirmed (Q-03) |
 | Character voice | Model locked (D-011); coverage budget open (Q-02) |
 | Animation model | **Locked** (D-012); weapon count for v1 open (Q-16) |

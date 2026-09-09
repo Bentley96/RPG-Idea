@@ -153,25 +153,88 @@ its own characterisation.
 
 ---
 
-## Effect 2 — Endings
+## Effect 2 — Testaments and endings
 
-Fallout-style: measured at the end of the final act, never a choice prompt.
+Per **D-013**, the ending reads the **whole trajectory**, not the final value.
 
-| Drift | Conviction | Ending |
+### Testaments
+
+At the close of every act the world records the protagonist's standing. This is
+automatic, permanent, and never a choice.
+
+| Testament | Condition |
+|---|---|
+| **Orthodox** | Orthodox band, sufficient conviction |
+| **Unorthodox** | Centre band, sufficient conviction |
+| **Demonic** | Demonic band, sufficient conviction |
+| **Unrecorded** | Conviction below threshold — the murim never named you |
+
+**A testament records; it does not constrain.** Drift and conviction keep
+moving freely afterward. What is locked is the *record*, permanently — the one
+part of their past the protagonist can never go back and revise. It fires at
+the same moment as the anchor advance (`docs/02-loop/loop-architecture.md` §3),
+and the two together are the game's statement that the past eventually stops
+being negotiable.
+
+### Trajectory shapes
+
+Three acts, three testaments.
+
+| Shape | Pattern | Reads as |
 |---|---|---|
-| Strongly positive | High | **Martial God** (무신) — power matched by control |
-| Near centre | High | **Sole Sovereign** (독존) — answers to no one, serves no ideal |
-| Strongly negative | High | **Heavenly Demon** (천마) — overwhelming, corrupting tyranny |
-| Any | Low | **The Hollow** — lived many lives, became nothing |
+| **Steadfast** | A → A → A | Never wavered |
+| **Convert** | A → A → B, or A → B → B | Changed once, and stayed changed |
+| **Returned** | A → B → A | Left the road and came back |
+| **Wanderer** | A → B → C | Never belonged anywhere |
 
-The fourth ending is not a failure state to be avoided by a checklist. It is
-the honest outcome for a protagonist who spent every loop optimising and never
-committed, and it is where the jadedness theme lands hardest.
+### Selection
 
-> The ending is the sum of how the player lived every loop — the story
-> document's stated thesis, mechanised.
+**Final standing chooses the ending. Trajectory chooses its framing.**
 
----
+| Final testament | Ending |
+|---|---|
+| Orthodox | **Martial God** (무신) — power matched by control |
+| Unorthodox | **Sole Sovereign** (독존) — answers to no one, serves no ideal |
+| Demonic | **Heavenly Demon** (천마) — overwhelming, corrupting tyranny |
+| Unrecorded | **The Hollow** — lived many lives, became nothing |
+
+Trajectory changes the epilogue, the closing tone, and which figures from the
+protagonist's past appear to speak to it. It never produces a wholly separate
+ending.
+
+### Worked examples
+
+- **Orthodox → Orthodox → Orthodox.** *Steadfast Martial God.* The purest
+  ascension. The mentor's teaching, held to across every life.
+- **Orthodox → Unorthodox → Demonic.** *Wanderer Heavenly Demon.* Not a fall
+  from grace but a long erosion — each compromise reasonable, the sum
+  monstrous.
+- **Demonic → Demonic → Orthodox.** *Convert Martial God.* Ascension carrying
+  the memory of what they were, and a murim that has not forgotten either.
+- **Orthodox → Demonic → Orthodox.** *Returned Martial God.* Came back. The
+  hardest road, and the ending should treat it as such.
+- **Unrecorded → Unrecorded → Unrecorded.** *The Hollow.* Every life spent
+  optimising, nothing ever chosen.
+
+### Authoring budget
+
+Deliberately bounded: **four full ending sequences, roughly four epilogue
+variants each.** The combinatorics of three testaments across four values would
+otherwise reach dozens of endings; collapsing trajectory into framing keeps the
+count affordable while preserving the feeling that the whole campaign was read.
+
+### Visibility
+
+The player's testaments are **shown** in the journal alongside knowledge flags.
+Seeing *Act 1: Orthodox* while currently drifting demonic is deliberate — it
+creates self-awareness and anticipation, and it makes the eventual ending feel
+earned rather than sprung.
+
+### Content leverage
+
+Testaments are cheap conditional-content hooks. NPCs and factions can reference
+what the murim recorded of you in an earlier act — *"You were one of the
+righteous, once"* — for the cost of a line.
 
 ## Interaction with pills
 
