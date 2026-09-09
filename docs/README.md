@@ -108,7 +108,7 @@ A linear, narrative, regression-driven murim RPG for **Unreal Engine 5**.
 | Knowledge system | **Specified** |
 | Act 1 | Authored |
 | Acts 2 and 3 | **To author** (Q-04). Three-act scope (D-013) |
-| Combat | Specified; posture unconfirmed (Q-03) |
+| Combat | Specified. Posture locked — hidden and deterministic (D-014) |
 | Character voice | Model locked (D-011); coverage budget open (Q-02) |
 | Animation model | **Locked** (D-012); weapon count for v1 open (Q-16) |
 | Progression & economy | **Deferred** (D-004) |

@@ -10,7 +10,8 @@ it from here.
 → **D-009** (conviction axis, four endings) · Q-12 mentor rank → **D-008**
 (Core Refinement, Tier III) · Q-02 delivery model → **D-011** (budget still
 open below) · Q-16 animation model → **D-012** (narrowed to weapon count) ·
-Q-18 anchor placement → **D-013** (one per act boundary, three acts).
+Q-18 anchor placement → **D-013** (one per act boundary, three acts) · Q-03
+posture → **D-014** (hidden, escalating, deterministic).
 
 ---
 
@@ -34,14 +35,6 @@ runtime. Runtime generation is a full technical subsystem — prompting, caching
 latency, cost, offline fallback, tone drift, and no voice acting — not a
 shortcut around the writing budget.
 
-### Q-03 — Posture as a core system
-**Blocks:** vertical slice combat
-**Doc:** `docs/03-systems/combat.md`
-
-Recommended and specified, not yet confirmed. Posture is what lets a Tier I
-player with excellent timing break a far stronger opponent — the clearest
-moment-to-moment expression of **D-007**. Needed for the slice.
-
 ### Q-04 — Acts 2 and 3
 **Blocks:** essentially all content work
 **Doc:** `docs/02-loop/loop-architecture.md` §5
@@ -54,23 +47,25 @@ Scope is three acts, collapsed from five. Not urgent for the vertical slice,
 which is Act 1 only, but it is the largest body of undone design work in the
 project.
 
-### Q-19 — Testament thresholds and ending authoring depth
-**Doc:** `docs/03-systems/paths-and-drift.md`
-
-Two sub-questions, both cheap to defer and expensive to get wrong:
-
-1. **Conviction threshold for a recorded testament.** Set too low and every
-   protagonist is named by Act 1; too high and Unrecorded becomes the default
-   and the trajectory system never fires. Needs playtest data
-2. **Epilogue depth per trajectory.** Budget is four endings × ~4 framings.
-   Whether a framing is a few reworded paragraphs or a distinct closing scene
-   is the difference between days and months
-
 ---
 
 ## Gated on the vertical slice
 
 Deliberately deferred until the loop is playable.
+
+### Q-20 — Posture feedback legibility
+**Doc:** `docs/03-systems/combat.md`, **D-014**
+
+Posture is deliberately hidden from the UI and read off the character instead.
+The open question is whether the diegetic signals — guard height, limb tremor,
+footing, breathing, block-impact VFX — are legible enough in real combat, at
+real camera distances, with multiple enemies on screen.
+
+If playtest shows players cannot read an imminent guard break, the fix is
+**stronger diegetic signalling**, not a bar. Falling back to a meter would
+reintroduce exactly the resource-management play D-014 exists to avoid.
+
+Needs the vertical slice to answer.
 
 ### Q-05 — Final GAS commitment
 **Doc:** `docs/04-technical/technical-design.md` §2
@@ -93,6 +88,18 @@ rate-limited or site-limited, or diminishing returns within a loop.
 ---
 
 ## Design detail
+
+### Q-19 — Testament thresholds and ending authoring depth
+**Doc:** `docs/03-systems/paths-and-drift.md`
+
+Two sub-questions, both cheap to defer and expensive to get wrong:
+
+1. **Conviction threshold for a recorded testament.** Set too low and every
+   protagonist is named by Act 1; too high and Unrecorded becomes the default
+   and the trajectory system never fires. Needs playtest data
+2. **Epilogue depth per trajectory.** Budget is four endings × ~4 framings.
+   Whether a framing is a few reworded paragraphs or a distinct closing scene
+   is the difference between days and months
 
 ### Q-09 — Confidence model
 **Doc:** `docs/01-narrative/character-axes.md`

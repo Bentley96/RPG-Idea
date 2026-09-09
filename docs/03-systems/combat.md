@@ -55,28 +55,81 @@ Tune against readability, not difficulty.
 
 ## Posture
 
-The prototype referenced "posture damage" once and never defined it. It needs
-defining, because it is what makes defence active rather than passive.
+**Locked: D-014.** Posture is a real internal value, hidden from the UI, that
+degrades under sustained defence and breaks deterministically.
 
-**Proposal — to confirm:**
+### Rules
 
-- Both player and enemies carry a **posture** gauge alongside health
-- Posture depletes from: blocking, being parried, absorbing heavy hits
-- Posture regenerates when not under pressure; regeneration is slower while
-  guarding
-- At zero posture: **stagger** — a window where the victim is open to a
-  heavy punish or a finisher
-- Successful parries deal heavy posture damage; this is the primary route to
-  breaking a stronger opponent
+| | |
+|---|---|
+| **Who has it** | Player and every enemy |
+| **Drains from** | Blocking, being parried, absorbing heavy hits |
+| **Escalates** | Per-hit cost **rises the longer guard is held continuously** |
+| **Recovers** | When not under pressure; slower while still guarding |
+| **At zero** | **Guard break** — stagger window, open to a heavy punish or finisher |
+| **Shown as** | **Nothing.** No bar, no meter, no number |
 
-**Why it matters here specifically:** posture is a *skill* stat, not a
-cultivation stat. A Tier I player with excellent parry timing can break a
-far stronger opponent's posture and kill them from a position their health bar
-says is hopeless. That is D-007 expressed as a moment-to-moment mechanic, and
-it is probably the most important thing this combat system can do.
+### Why it is hidden
 
-> **OPEN:** confirm posture as a core system, and whether enemies telegraph
-> posture state visually. Tracked in `docs/06-production/open-questions.md`.
+A visible bar turns defence into meter management — the player stops watching
+the fight and starts reading the HUD, and posture becomes a resource to
+optimise rather than a state to feel.
+
+Hidden, it is communicated entirely through the **character**:
+
+| Channel | Signal |
+|---|---|
+| Guard height | Drops as posture falls; the stance opens up |
+| Limb tremor | Arms and blade shake under sustained pressure |
+| Footing | Steps become uneven, stance slips backward |
+| Breathing | Audio strains |
+| Block impact | VFX colour and audio weight shift as posture falls |
+
+The player learns their guard is about to go by *watching someone struggle*,
+which is both better-feeling and more appropriate to the fantasy than a
+depleting rectangle.
+
+### Why it is deterministic, not a chance roll
+
+Posture breaks at a threshold. It does **not** roll a hidden per-hit chance.
+
+1. **Guard break is high-consequence.** Random high-consequence outcomes read
+   as unfair rather than difficult — the same objection that cut passive
+   evasion (below)
+2. **Knowledge is this game's primary progression axis.** A combat system that
+   cannot be learned works against the core design
+3. **Posture exists to let a Tier I player deliberately break a stronger
+   opponent** (D-007). Random breaks mean the player cannot set up the punish,
+   and posture stops expressing skill
+4. **Randomness punishes blocking, not turtling.** Unpredictable breaks teach
+   "blocking is unreliable, stop blocking." A learnable threshold teaches
+   "I get about six blocks, then I must create space or take initiative" —
+   which is the intended behaviour
+
+> **Hidden is not random.** Concealing the *number* preserves mystery.
+> Concealing the *rule* would destroy the lesson. Posture is learned by feel
+> and by reading the character, exactly like an attack tell.
+
+### Why posture matters to this game specifically
+
+Posture is a **skill** stat, not a power stat. It is the clearest
+moment-to-moment expression of **D-007**: a Tier I player with excellent parry
+timing can break the posture of a far stronger opponent and kill them from a
+position their health bar says is hopeless.
+
+Parries deal heavy posture damage, making them the primary route to breaking a
+stronger opponent — the skill route to victory when the cultivation route is
+closed.
+
+### Persistence
+
+Combat-transient. Not saved in any form. Reset on encounter start.
+See `docs/02-loop/persistence-matrix.md`.
+
+### Deferred
+
+Thresholds, drain rates, escalation curve and recovery timings are progression
+numbers and wait on **D-004**.
 
 ---
 
@@ -235,8 +288,9 @@ enemy archetypes reuse the bases.
 
 ## Open work
 
-- Confirm posture as a core system
 - Telegraph language specification (colours, poses, audio)
+- Posture's diegetic feedback set — the exact stance, tremor, footing and audio
+  states that signal a guard about to break
 - i-frame counts and defensive timing values
 - Enemy archetype catalogue with attack sets and tells
 - Hit feedback: hitstop, camera shake, impact audio layering

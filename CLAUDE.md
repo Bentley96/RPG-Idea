@@ -54,6 +54,9 @@ These are not preferences.
 - **Path sets diction and register, not just sentiment** (D-011). Voice is
   three orthogonal layers: register (path), affect (jadedness), stance
   (confidence). Never author a line per combination
+- **No hidden randomness in combat outcomes** (D-014, and the passive-evasion
+  cut). Systems may be hidden from the UI; their **rules** must stay learnable.
+  Hidden is not the same as random
 - **Every act must be completable at Tier I** with the expected technique set
 - **Every loop must yield durable progress** — a knowledge flag, a technique,
   or a drift shift
@@ -156,5 +159,5 @@ in `docs/02-loop/knowledge-as-key.md`.
 3. Loop state machine: anchor → death → interlude → anchor
 4. Vertical slice Act 1 content
 
-Blocking design questions are Q-01 through Q-04 in
+Blocking design questions are Q-02 and Q-04 in
 `docs/06-production/open-questions.md`.

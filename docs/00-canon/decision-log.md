@@ -8,6 +8,72 @@ mark the old entry `SUPERSEDED BY D-xxx` and write a new entry.
 
 ---
 
+## D-014 — Posture is hidden, escalating, and deterministic
+**Status:** Locked. Resolves Q-03.
+
+Posture exists as a real internal value for the player and every enemy. It is
+**never surfaced as a bar, meter or number.**
+
+### What it does
+
+| Property | Rule |
+|---|---|
+| **Drains from** | Blocking, being parried, absorbing heavy hits |
+| **Escalates** | Per-hit posture cost **rises the longer guard is held continuously**. Turtling is punished specifically and sharply |
+| **Recovers** | When not under pressure. Slower while still guarding |
+| **At zero** | **Guard break** — a stagger window, open to a heavy punish or finisher |
+| **Visible as** | Nothing. No UI element of any kind |
+
+### Communicated diegetically, not through UI
+
+The player reads posture off the **character**, not off the screen:
+
+- Guard height drops; the stance opens up
+- Arms and blade shake under sustained pressure
+- Footing slips, steps become uneven
+- Breathing audio strains
+- Block-impact VFX and audio shift in colour and weight as posture falls
+
+This is the point of hiding it. Posture stops being a meter to manage and
+becomes something the player *sees happening to a person*.
+
+### Deterministic, not a percentage roll
+
+Posture breaks at a threshold. It does **not** roll a hidden chance per hit.
+
+This is a deliberate departure from the original proposal, for four reasons:
+
+1. **Guard break is high-consequence.** A random high-consequence outcome reads
+   as unfair rather than difficult — the same objection that cut passive
+   evasion from the prototype
+2. **Knowledge is this game's primary progression axis**
+   (`docs/02-loop/knowledge-as-key.md`). A combat system that cannot be learned
+   is hostile to the design's core
+3. **Posture's job is to let a Tier I player deliberately break a stronger
+   opponent** (D-007). If breaks are random, the player cannot *set up* the
+   punish, and posture stops expressing skill at all
+4. **Randomness does not actually punish turtling — it punishes blocking.** A
+   player whose guard breaks at unpredictable moments learns "blocking is
+   unreliable, stop blocking." A player who learns "about six blocks and I am
+   done" is forced to manage aggression actively, which is the intended
+   behaviour
+
+**Hidden is not the same as random.** The player learns posture by feel and by
+watching the character, exactly as they learn an attack tell. Concealing the
+number preserves the mystery; concealing the *rule* would destroy the lesson.
+
+### Persistence
+
+Combat-transient. Not saved in any form — not `SoulSave`, not `LifeSave`. Reset
+on encounter start.
+
+### Deferred
+
+Threshold values, drain rates, escalation curve and recovery timings are
+progression numbers and wait on **D-004**.
+
+---
+
 ## D-013 — Act testaments: the ending is a trajectory, not a position
 **Status:** Locked. Resolves Q-18. Amends D-009.
 

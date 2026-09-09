@@ -39,6 +39,7 @@ depends on those rules being learnable.
 | Realm name | ○ | Derived from tier and drift |
 | Max HP | ○ | Returns to base |
 | Current HP | ○ | Full at anchor |
+| **Posture** | ○ | Combat-transient. Not saved at all — reset on encounter start (**D-014**) |
 | Qi (current) | ○ | Empty at anchor |
 | Naegong cultivation progress | ○ | The core is gone |
 | Breakthrough state | ○ | Soft-locks re-apply from Tier I |
