@@ -27,7 +27,7 @@ will save the project.
 | **Core combat** | Light, heavy, guard, parry, dodge, lock-on. Posture if confirmed |
 | **The authored death** | The cultivator. Scripted, unwinnable, legible |
 | **Regression Interlude** | Shows what was lost, what was kept, what was learned |
-| **The return** | Anchor, Level 1, full technique set. The bullies are trivial |
+| **The return** | Anchor, Tier I, full technique set. The bullies are trivial |
 | **2–4 knowledge flags** | Including `K_CBT_QI_STRIKE` from the authored death |
 | **Persistence** | `SoulSave` / `LifeSave` / `WorldSave` split, working and tested |
 | **Loop acceleration, minimal** | The mentor sequence compresses on loop 2. Proves the mechanism |

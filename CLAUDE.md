@@ -31,14 +31,25 @@ These are not preferences.
 - Use **"regression"**, never "reincarnation", "rebirth", or "respawn" for the
   player. See the banned-terms list in `docs/00-canon/glossary.md`
 - "Loop", never "generation" or "cycle"
-- "Core Refinement" is not a realm. The realm ladder is in the glossary
+- **Never say "level".** There are two ladders (D-008): **martial rank**
+  (삼류 → 자연경, persists) and **cultivation tier** (I–VIII, resets). "Level"
+  hides which one is meant
+- **Unorthodox (사파) is a distinct path**, never a weaker Demonic and never
+  mere neutrality (D-009)
 
 **Design**
 - **Technique carries the fight; cultivation carries the ceiling** (D-007).
   Never propose persistent stat multipliers as progression
-- **The path is cumulative drift, never a choice** (D-006). Never write a menu,
-  prompt, or dialogue wheel that asks the player to pick a path
-- **Every act must be completable at Level 1** with the expected technique set
+- **The path is cumulative drift, never a choice** (D-006, D-009). Never write
+  a menu, prompt, or dialogue wheel that asks the player to pick a path.
+  Three paths, tracked by **drift** (which road) and **conviction** (how hard
+  they committed)
+- **Anchor advance is player-chosen and irreversible** (D-010). It must never
+  make the game unwinnable — every anchor leaves the rest completable
+- **Path sets diction and register, not just sentiment** (D-011). Voice is
+  three orthogonal layers: register (path), affect (jadedness), stance
+  (confidence). Never author a line per combination
+- **Every act must be completable at Tier I** with the expected technique set
 - **Every loop must yield durable progress** — a knowledge flag, a technique,
   or a drift shift
 - **Any new system must declare its row in the persistence matrix before it is

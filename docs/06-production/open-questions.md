@@ -6,41 +6,50 @@ each one blocks.
 When one is settled, add an entry to `docs/00-canon/decision-log.md` and remove
 it from here.
 
+**Recently resolved:** Q-01 anchor advance → **D-010** · Q-11 unaligned ending
+→ **D-009** (conviction axis, four endings) · Q-12 mentor rank → **D-008**
+(Core Refinement, Tier III) · Q-02 delivery model → **D-011** (budget still
+open below).
+
 ---
 
 ## Blocking — resolve before significant production
 
-### Q-01 — Anchor advance mechanism
-**Blocks:** Acts 2–5 authoring, replay-tax implementation
-**Doc:** `docs/02-loop/loop-architecture.md` §3
-
-The anchor is fixed for Act 1 and advances at act boundaries. *What moves it,
-in the fiction?*
-
-- **A cultivation milestone** — forming a core creates a new fixed point
-- **A place or object** — reaching a location or binding an artefact re-anchors
-- **Uncontrolled drift** — the anchor slides forward on its own
-
-The third is the most interesting narratively (the player loses the ability to
-undo earlier mistakes, and that is frightening) and the most punishing
-mechanically. Needs a call before Act 2 can be written.
-
-### Q-02 — Narrative delivery for the character axes
-**Blocks:** all Acts 2–5 writing at scale
+### Q-02 — Voice coverage budget
+**Blocks:** Acts 2–5 writing at scale
 **Doc:** `docs/01-narrative/character-axes.md`
 
-Authored variants, tonal selection, or runtime generation? This determines the
-shape and size of the entire script. **Recommendation: tonal selection** — author
-each beat once with 2–4 tonal variants by quadrant, reserving full per-line
-variation for the few beats that carry the theme.
+The *how* is resolved (**D-011**): three orthogonal layers — register from
+path, affect from jadedness, stance from confidence — applied to one authored
+beat. What remains is the **budget**: which beats get full layering.
 
-Do not write Acts 2–5 at scale until this is decided.
+**Recommendation:** full layering for every protagonist line in a scene the
+player replays across loops, and every beat carrying the theme. Incidental and
+functional dialogue ships in path register only. Caps the writing budget at
+roughly 3× rather than 12×.
+
+Also unresolved: whether path-register variation is authored or generated at
+runtime. Runtime generation is a full technical subsystem — prompting, caching,
+latency, cost, offline fallback, tone drift, and no voice acting — not a
+shortcut around the writing budget.
+
+### Q-18 — Anchor point placement
+**Blocks:** act authoring, softlock validation
+**Doc:** `docs/02-loop/loop-architecture.md` §3
+
+The anchor advance mechanic is locked (**D-010**) but the placement is not.
+One advance point per act boundary is the baseline. Optional mid-act anchors
+would give a finer risk/reward dial, at the cost of more softlock-safety
+validation — every anchor must leave the rest of the game completable.
+
+Also open: how the game communicates what is being given up, clearly enough
+that an irreversible choice is fair.
 
 ### Q-03 — Posture as a core system
 **Blocks:** vertical slice combat
 **Doc:** `docs/03-systems/combat.md`
 
-Recommended and specified, not yet confirmed. Posture is what lets a Level 1
+Recommended and specified, not yet confirmed. Posture is what lets a Tier I
 player with excellent timing break a far stronger opponent — the clearest
 moment-to-moment expression of **D-007**. Needed for the slice.
 
@@ -90,21 +99,10 @@ each loop an internal emotional arc.
 
 ### Q-10 — Path closure and reversibility
 **Doc:** `docs/03-systems/paths-and-drift.md`
-Is deep drift a hard or soft closure of the opposite path, and can it be walked
-back? Recommended: soft closure, very expensive reversal — redemption and fall
-both possible, both costing multiple loops of deliberate effort.
-
-### Q-11 — The unaligned ending
-**Doc:** `docs/03-systems/paths-and-drift.md`
-A player who ends near zero drift has committed to nothing. A third distinct
-ending (the hermit, the one who refuses both), a weaker version of the nearer
-ending, or a deliberate failure state? A third path is the most interesting and
-the most expensive.
-
-### Q-12 — Mentor's rank
-**Doc:** `docs/00-canon/glossary.md`
-Canonicalised as **Core Formation (Tier III)**, replacing the non-existent
-"Core Refinement". Confirm, or pick a lower tier if he should be weaker.
+Recommended: **soft closure, expensive reversal.** Drift moves freely but
+conviction never falls, so a protagonist who switches roads late reads as
+*devoted to having changed*. Confirm, and decide how many loops a full
+reversal should cost.
 
 ### Q-13 — In-fiction name for the Regression Interlude
 **Doc:** `docs/00-canon/glossary.md`
@@ -127,12 +125,59 @@ that the protagonist is regressing. A major narrative fork.
 
 ### Q-16 — Animation budget
 **Doc:** `docs/03-systems/combat.md`
-5 weapons × 6 styles × full movelists, plus hit reactions, deaths and
-traversal, is an enormous animation requirement and **the single most likely
-thing to sink this project**. Mocap, marketplace, Motion Matching, or a
-ruthless cut to 1–2 weapons for v1?
 
-The vertical slice uses unarmed only, which defers but does not answer this.
+**The single most likely thing to sink this project.** Not because it is hard,
+but because the cost is invisible at design time and enormous at production
+time: writing "six sect styles" takes ten seconds and builds in years of work.
+
+**The arithmetic.** Every distinct action a character can perform needs an
+animation clip — hand-keyed or motion-captured movement data, not code. One
+weapon with one style needs roughly:
+
+| Category | Clips |
+|---|---|
+| Light combo string | 4–5 |
+| Heavy attacks | 2–3 |
+| Sprint / dash attacks | 2 |
+| Parry, parry success, block idle / impact / break | 5 |
+| Dodges, directional | 4 |
+| Hit reactions, light and heavy × 4 directions | 8 |
+| Stagger, knockdown, get-up | 3–4 |
+| Death | 1–2 |
+| Locomotion — idle, walk, run, turn, jump, land | 8–10 |
+| Signature style techniques | 3–5 |
+| **Total, one weapon-style pairing** | **~40–60** |
+
+The design lists **six weapon-style pairings**, so the player alone is roughly
+**250–350 clips**. Every enemy archetype needs its own moveset — call it 30
+clips each, and fifteen archetypes is another **450**. The full vision is
+**700–1000+ clips**.
+
+At an indie rate of one to three good clips a day, that is multiple years of
+animation work alone.
+
+**Why it is worse here than in most genres.** A martial arts game *is* its
+animation. The entire fantasy is beautiful movement, and stiff or mismatched
+animation reads as cheap instantly — you cannot hide it behind systems or
+level design the way a shooter can. Six martial arts styles that do not each
+look distinctly and correctly themselves are worse than two that do.
+
+**Mitigations, roughly in order of value:**
+
+1. **Shared base moveset per weapon + 3–5 signature techniques per style.**
+   Turns six full movesets into one base plus six small sets. This is the
+   practical answer and it should be the default assumption
+2. **Differentiate by timing, VFX and follow-through** rather than wholly
+   unique clips — same underlying swing, different aura, tempo and recovery
+   gets "feels different" for perhaps 30% of the cost
+3. **Cut to one or two weapons for v1.** The vertical slice already does this
+4. **Buy a coherent mocap library from a single vendor** so styles at least
+   match each other stylistically
+5. **Share skeletons and retarget** across all humanoid characters
+
+**The decision needed:** commit to the shared-base model now, or accept the
+full per-style cost and cut the style count to what that budget actually buys.
+Deferring this decision does not make it cheaper.
 
 ### Q-17 — Repository migration
 **Doc:** `docs/04-technical/migration-from-unity.md`

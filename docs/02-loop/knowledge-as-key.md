@@ -15,8 +15,8 @@ the most important thing to get right.
 
 Knowledge is the only progression that death cannot touch (see
 `docs/02-loop/persistence-matrix.md`). It costs nothing to carry, can never be
-lost, and it is the mechanism by which a Level 1 character on loop 9 does
-things a Level 60 character on loop 1 could not.
+lost, and it is the mechanism by which a Tier I character on loop 9 does
+things a Tier VII character on loop 1 could not.
 
 ---
 

@@ -35,7 +35,7 @@ A **loop** is one life: from the anchor, to death, to the next anchor.
 
 ### The five states
 
-**1. Anchor / Return.** The player materialises at the anchor point. Level 1.
+**1. Anchor / Return.** The player materialises at the anchor point. Cultivation back to Tier I.
 Qi empty. Body reset. Every technique, every knowledge flag, all path drift and
 jadedness intact. The loop counter increments.
 
@@ -90,43 +90,77 @@ Design requirements for this fight:
 
 From loop 2, death can happen anywhere. This is a **hard content constraint**:
 
-> Every act must be enterable and completable at Level 1, holding only the
+> Every act must be enterable and completable at Tier I, holding only the
 > technique set and knowledge flags the player is expected to have by the time
 > they reach that act.
 
-If any act requires a specific cultivation level to be survivable, the design
+If any act requires a specific cultivation tier to be survivable, the design
 is broken — because a player who dies at the start of that act arrives back at
-it at Level 1 and must be able to climb again. Difficulty is tuned against
+it at Tier I and must be able to climb again. Difficulty is tuned against
 **technique tier**, never against character level.
 
 ---
 
 ## 3. The anchor and how it moves
 
-A fixed anchor forever is thematically pure (the player always returns to the
-alley and the bullies) but the replay tax grows without bound — by act 5 the
+A fixed anchor forever is thematically pure — the player always returns to the
+alley and the bullies — but the replay tax grows without bound. By act 5 the
 player replays four acts to reach new content. Unacceptable.
 
-**Design:** the anchor is fixed for Act 1, then **advances at act boundaries**.
+**Resolution (D-010): the player chooses when to advance the anchor, and the
+choice is irreversible.**
 
-- **Act 1's anchor is sacred.** Returning to the alley, to the bullies who
-  killed nothing but your dignity, and flattening them with technique you
-  earned in a life they know nothing about — that is the game's thesis
-  statement. It must be experienced at least once.
-- **From Act 2 on, the anchor advances** with the story. Each advance needs an
-  in-fiction reason, not a menu.
+### Anchor advance
 
-> **OPEN — anchor advance mechanism.** *What*, in the fiction, moves the
-> anchor? Candidate directions:
-> - **A cultivation milestone** — forming a core creates a new "fixed point"
->   the soul returns to.
-> - **A place or object** — reaching a location or binding to an artefact
->   re-anchors the regression.
-> - **Uncontrolled drift** — the anchor slides forward on its own, which is
->   *frightening*: the player loses the ability to undo earlier mistakes.
->
-> The third is the most interesting narratively and the most punishing
-> mechanically. Tracked in `docs/06-production/open-questions.md`.
+At defined points the player may **abandon their current anchor** and set a
+later one.
+
+| Property | Rule |
+|---|---|
+| **Trigger** | Player-chosen. Never automatic, never a story event that happens to them |
+| **Reversible** | **No.** Everything before the new anchor becomes permanently inaccessible |
+| **Telegraphed** | The player must be told plainly what they are giving up, before committing |
+| **Softlock-safe** | Every anchor must leave the rest of the game completable with what is obtainable from it. **Hard constraint** |
+| **Cost** | Ticks the jadedness axis. Letting go has a price |
+
+### The trade
+
+This is the point of the mechanic. Advancing is genuinely tempting and
+genuinely costly:
+
+| Advance the anchor | Keep the old anchor |
+|---|---|
+| Shorter loops, far less replay | Full access to everything you have seen |
+| Reach the frontier faster after every death | Missed knowledge and items are still obtainable |
+| Permanently lose the earlier world | Every death costs the full walk back |
+
+What is **lost**: the ability to physically return to earlier regions and
+moments, and anything there you had not already obtained — knowledge flags,
+item locations, relationships, drift opportunities.
+
+What is **kept**: every knowledge flag already earned, all technique and
+martial rank, drift and conviction. You do not forget the past. You simply
+cannot go back to it.
+
+### In fiction
+
+The anchor is *the earliest moment the protagonist can still bear to return
+to*. Advancing it is a deliberate act of letting a part of their life go.
+
+This is why it costs jadedness, and it is the mechanic that most directly
+serves the theme: the regressor is hollowed out not by dying, but by choosing,
+over and over, to stop being able to return to who they were.
+
+### Act 1's anchor is sacred
+
+The player may not advance past Act 1's anchor until Act 1 is complete.
+Returning to the alley and flattening the bullies with technique they know
+nothing about is the game's thesis statement, and it must be experienced.
+
+> **OPEN — anchor point placement.** How many advance points, and where. One
+> per act boundary is the baseline; optional mid-act anchors would give a finer
+> risk/reward dial at the cost of more softlock-safety validation. Tracked in
+> `docs/06-production/open-questions.md`.
 
 ---
 
@@ -159,7 +193,7 @@ document's stated shape and must be expanded.
 | Beat | Content | Loop |
 |---|---|---|
 | Opening | Orphan. No standing, no protection. Tormented by local bullies. Deliberately powerless | 1 |
-| The mentor | An old wandering martial artist, **Core Formation**, offers to teach. Openly says the player lacks talent. Fundamentals only: stances, footwork, taking and throwing a hit | 1 |
+| The mentor | An old wandering martial artist, **Core Refinement**, offers to teach. Openly says the player lacks talent. Fundamentals only: stances, footwork, taking and throwing a hit | 1 |
 | Competence | The player improves through real combat. Handles ordinary opponents. **Cultivation never rises** — they were never taught to refine qi | 1 |
 | **The wall** | A genuine cultivator kills them. **Authored death** | 1 |
 | **The return** | Regression to the anchor. Every technique intact. The bullies are trivial. The player wins | 2 |
@@ -212,8 +246,8 @@ human and AI-assisted content generation.
 
 | System | Constraint imposed |
 |---|---|
-| Combat | Tuned against technique tier, never character level (D-007) |
-| Encounter design | Every act survivable at Level 1 |
+| Combat | Tuned against technique tier, never cultivation tier (D-007) |
+| Encounter design | Every act survivable at Tier I |
 | Save system | Must persist loop counter, flags, techniques, drift across deaths |
 | Content authoring | Every loop yields durable progress |
 | UI | Must communicate what persisted vs. what was lost, every interlude |

@@ -80,10 +80,15 @@ A linear, narrative, regression-driven murim RPG for **Unreal Engine 5**.
 1. **Regression, never reincarnation.** Same world, rewound (D-005)
 2. **The first death is authored; every death after is failure** (D-003)
 3. **Technique carries the fight; cultivation carries the ceiling** (D-007)
-4. **Path is cumulative drift, never a choice** (D-006)
-5. **Every loop yields durable progress** — no wasted loops
-6. **Every act is completable at Level 1** with the expected technique set
-7. **Any new system declares its persistence row before implementation**
+4. **Two ladders.** Martial rank persists; cultivation tier resets (D-008).
+   Never say "level" — it hides which ladder is meant
+5. **Three paths.** Orthodox, Unorthodox, Demonic — cumulative drift plus
+   conviction, never a choice (D-006, D-009)
+6. **The player chooses when to advance the anchor, and it is irreversible** (D-010)
+7. **Path sets language, not just tone** (D-011)
+8. **Every loop yields durable progress** — no wasted loops
+9. **Every act is completable at Tier I** with the expected technique set
+10. **Any new system declares its persistence row before implementation**
 
 ---
 
@@ -92,10 +97,15 @@ A linear, narrative, regression-driven murim RPG for **Unreal Engine 5**.
 | Area | State |
 |---|---|
 | Core loop design | **Specified** |
+| Anchor advance | **Specified** (D-010); placement open (Q-18) |
+| Progression ladders | **Specified** — martial rank + cultivation tier (D-008) |
+| Paths & drift | **Specified** — three paths + conviction (D-009) |
 | Persistence rules | **Specified** |
 | Knowledge system | **Specified** |
 | Act 1 | Authored |
 | Acts 2–5 | **To author** (Q-04) |
 | Combat | Specified; posture unconfirmed (Q-03) |
+| Character voice | Model locked (D-011); coverage budget open (Q-02) |
+| Animation budget | **Unresolved production risk** (Q-16) |
 | Progression & economy | **Deferred** (D-004) |
 | UE5 project | **Not started** — repo still holds the abandoned Unity project (Q-17) |

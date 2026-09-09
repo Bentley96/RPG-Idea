@@ -45,8 +45,8 @@ game is meant to feel weak, frustrating, and human.
 
 An old man, a wandering martial artist, takes pity on the orphan and offers to
 teach. Crucially, this mentor is **not** a hidden grandmaster. He sits at
-**Core Formation (Tier III)** — genuinely capable, middling in the wider murim,
-nowhere near the top — and he openly admits the player lacks natural talent.
+**Core Refinement (Tier III)** — genuinely capable, middling in the wider
+murim, nowhere near the top — and he openly admits the player lacks natural talent.
 What he can offer is fundamentals: stances, footwork, how to take a hit and how
 to throw one. Honest, basic, unglamorous instruction.
 
@@ -124,22 +124,30 @@ is ambushed on the third night. What the innkeeper's daughter died of, and what
 saying so will open.
 
 Knowledge is the only progression death cannot touch. It costs nothing to
-carry, it can never be lost, and it is how a Level 1 protagonist on loop 9 does
-what a Level 60 protagonist on loop 1 could not.
+carry, it can never be lost, and it is how a Tier I protagonist on loop 9 does
+what a Tier VII protagonist on loop 1 could not.
 
 Full system: `docs/02-loop/knowledge-as-key.md`.
 
 ---
 
-## The Two Paths
+## The Three Paths
 
 A branching morality system driven by **cumulative drift**, never by a choice
-prompt (D-006).
+prompt (D-006, D-009). Three roads, not two — **Unorthodox (사파) is a distinct
+path**, not a weaker Demonic and not the absence of commitment.
 
 ### The Path of Murim — *Toward the Martial God*
 The orthodox, disciplined road. Mastery through righteous sects, legitimate
 cultivation methods, restraint, and the slow honest climb. The endpoint is to
 ascend as a **Martial God** — a paragon whose power is matched by control.
+
+### The Unorthodox Road — *Toward the Sole Sovereign*
+The pragmatic road. Profit, leverage, survival. Sapa are not villains: they
+lie, deal, steal and keep their bargains because reputation is an asset. The
+endpoint is the **Sole Sovereign** (독존) — someone who answers to no one and
+serves no ideal, having decided that ideals are expensive and they could not
+afford them.
 
 ### The Demonic Path — *Toward the Heavenly Demon*
 The forbidden road. Faster, hungrier, crueller. Demonic arts, energy
@@ -147,14 +155,16 @@ absorption, techniques that consume rather than cultivate. The endpoint is to
 become the **Heavenly Demon** (천마, Cheonma) — a tyrant of overwhelming,
 corrupting power.
 
-The paths offer different abilities, allies, enemies and tones. The player's
+Each path offers different abilities, allies, enemies and tones. The player's
 position accumulates across all loops and is **never locked**. Because drift
 persists while cultivation does not, deep commitment to a path makes its
 techniques available *early* in later loops — the body starts over, the nature
 does not.
 
-The ending is selected by accumulated drift at the end of the final act. Full
-system: `docs/03-systems/paths-and-drift.md`.
+The ending is selected by accumulated **drift and conviction** at the end of
+the final act — including a fourth outcome for a protagonist who lived many
+lives and committed to nothing. Full system:
+`docs/03-systems/paths-and-drift.md`.
 
 ---
 
@@ -190,7 +200,7 @@ Binding rules for anyone — human or AI — writing content for this game.
 
 - Early-game writing should feel grounded, small, and physically frustrating.
   Avoid grandeur.
-- The mentor (Core Formation, no hidden depths) stays humble and human. Never
+- The mentor (Core Refinement, no hidden depths) stays humble and human. Never
   reveal him as secretly powerful.
 - Dialogue and narration tone must be **dynamically adjusted** to the
   character's current position on the Jadedness and Confidence axes.
@@ -198,11 +208,15 @@ Binding rules for anyone — human or AI — writing content for this game.
   `docs/00-canon/glossary.md` for the full banned-terms list.
 - Cultivation resets should land as a genuine loss every time, never
   trivialised, even as technique persistence softens the blow.
-- The two paths must feel mechanically and tonally distinct, not a good/evil
-  cosmetic swap.
+- The three paths must feel mechanically and tonally distinct, not a
+  good/evil cosmetic swap. **Unorthodox is never written as a weaker Demonic**
+  or as fence-sitting.
+- Each path has its own **diction and register**, not just sentiment: Orthodox
+  is calm and measured, Unorthodox wry and transactional, Demonic blunt and
+  hot (**D-011**). See `docs/03-systems/paths-and-drift.md`.
 - **Never present the path as a choice.** No menus, no dialogue wheel with a
   demonic option flagged as such. Drift accumulates from what the player does.
-- Content must assume the player may arrive at **any act at Level 1** with high
+- Content must assume the player may arrive at **any act at Tier I** with high
   technique. Never write a scene that assumes a minimum cultivation level.
 - Every loop must yield durable progress — a knowledge flag, a technique, or a
   drift shift. See the no-wasted-loop rule in

@@ -12,12 +12,12 @@ banned synonym, the banned form is listed — do not use it anywhere.
 |---|---|---|
 | **Regression** | The protagonist's return to a fixed earlier point in the same timeline, on death | Reincarnation, rebirth, respawn, resurrection |
 | **Loop** | One life, from anchor to death. Numbered from 1 | Generation, cycle, incarnation, run |
-| **Anchor** | The fixed point in time and space a regression returns the player to | Spawn point, checkpoint, sanctum |
-| **Anchor advance** | The story event that moves the anchor forward to a later point | — |
+| **Anchor** | The point in time and space a regression returns the player to | Spawn point, checkpoint, sanctum |
+| **Anchor advance** | The player's deliberate, irreversible act of moving the anchor forward, abandoning everything before it (**D-010**) | — |
 | **Regression Interlude** | The between-lives sequence where losses, retentions and gains are shown | Reincarnation Sanctum, death screen |
 | **Loop counter** | Monotonic count of lives lived. Never resets | Generation number |
 | **Knowledge flag** | A persistent record that the protagonist knows a specific fact | — |
-| **Frontier** | The portion of a loop that is new content, past everything the player has already seen | — |
+| **Frontier** | The portion of a loop that is new content | — |
 | **Recovery** | The portion of a loop that replays known content under acceleration | — |
 
 > In-fiction name for the Regression Interlude is still open — see
@@ -25,55 +25,103 @@ banned synonym, the banned form is listed — do not use it anywhere.
 
 ---
 
+## The two ladders
+
+The game has **two separate progression ladders** and they must never be
+conflated (**D-008**). One measures skill and persists; the other measures
+internal energy and resets. This is **D-007** made structural.
+
+| | **Martial Rank** (무공 경지) | **Cultivation Realm** (내공) |
+|---|---|---|
+| Measures | Martial skill and mastery | Internal energy accumulation |
+| Tradition | Korean murim (무협) | Xianxia cultivation |
+| On death | **Persists** | **Resets** |
+| Who can see it | Other martial artists, on sight | Largely hidden |
+| Drives | How well you fight | What you can survive |
+
+### Ladder A — Martial Rank (persists)
+
+The Korean murim rank ladder. This is what other martial artists recognise in
+you, and it is the ladder the protagonist genuinely climbs across loops.
+
+| # | Rank | Korean | Meaning |
+|---|---|---|---|
+| 0 | Unranked | 무명 (Mumyeong) | Not a martial artist |
+| 1 | Third-Rate | 삼류 (Samryu) | Trained. Basic forms |
+| 2 | Second-Rate | 이류 (Iryu) | Competent |
+| 3 | First-Rate | 일류 (Ilryu) | A master (고수) begins here |
+| 4 | Peak | 절정 (Jeoljeong) | Elite. Command of intent |
+| 5 | Transcendent | 초절정 (Chojeoljeong) | Above the peak |
+| 6 | Hwagyeong | 화경 (化境) | Transformation Realm |
+| 7 | Hyeongyeong | 현경 (玄境) | Profound Realm. Pinnacle of human martial arts |
+| 8 | Saengsagyeong | 생사경 (生死境) | Life-and-Death Realm |
+| 9 | Jayeongyeong | 자연경 (自然境) | Nature Realm. The summit |
+
+### Ladder B — Cultivation Realm (resets)
+
+The xianxia realm ladder. Rebuilt from Tier I every loop. Names differ by the
+protagonist's **path drift** (`docs/03-systems/paths-and-drift.md`) — the same
+tier reads differently depending on what they have become.
+
+| Tier | Orthodox (정파) | Unorthodox (사파) | Demonic (마교) |
+|---|---|---|---|
+| **I** | Qi Condensation | Qi Scavenging | Demonic Qi Gathering |
+| **II** | Foundation Establishment | Crude Foundation | Demon Foundation |
+| **III** | **Core Refinement** | Tempered Core | Corrupt Core Refinement |
+| **IV** | Core Formation | Blackened Core | Demonic Core Formation |
+| **V** | Nascent Soul | Severed Soul | Heavenly Demon Soul |
+| **VI** | Soul Transformation | Soul Devourer | Asura Transformation |
+| **VII** | Martial King | Sapa Overlord | Archdemon |
+| **VIII** | **Martial God** (무신) | **Sole Sovereign** (독존) | **Heavenly Demon** (천마) |
+
+**Level bands are deliberately not assigned.** Tiers are ordinal. Numeric level
+mapping is progression work and is deferred (**D-004**). Reference tiers, never
+levels, in design and code.
+
+> **Core Refinement** sits at Tier III, between Foundation Establishment and
+> Core Formation: the core is condensed here and completed at Tier IV. It is
+> not a standard realm in published xianxia ladders — it is this project's
+> insertion, and it restores the mentor to the rank the original story document
+> gave him.
+
+---
+
 ## Cultivation terminology
 
 | Canonical | Korean | Meaning |
 |---|---|---|
-| **Naegong** | 내공 | Internal energy. Core qi cultivation; fuels every other technique |
+| **Naegong** | 내공 | Internal energy. Fuels every other technique |
 | **Gyeonggong** | 경공 | Lightness skill. Leaping, gliding, wall-running |
 | **Geomgi** | 검기 | Sword aura. Energy extended along a blade |
-| **Geomgang** | 검강 | Sword force. The advanced, solidified form of Geomgi |
+| **Geomgang** | 검강 | Sword force. The solidified form of Geomgi |
 | **Oegong** | 외공 | Iron body. Hardening the body against damage |
-| **Gigam** | 기감 | Energy sense. Detecting hostile intent and hidden enemies |
+| **Gigam** | 기감 | Energy sense. Detecting hostile intent |
 | **Jeomhyeol** | 점혈 | Acupoint strikes. Sealing an opponent's energy points |
-| **Magi** | 마기 | Demonic energy. Corrupting, aggressive counterpart to orthodox qi |
+| **Magi** | 마기 | Demonic energy |
+| **Gosu** | 고수 | A master. First-Rate and above |
 | **Dantian** | 단전 | The energy centre where the core forms |
 | **Meridians** | 경맥 | The channels qi flows through |
 
 ---
 
-## Realms
+## Paths
 
-The canonical realm ladder. **Level determines realm**, always — realm is a
-derived value, never set independently.
+Three paths, not two (**D-009**). Unorthodox is **not** a lesser demonic — it
+is a distinct road with its own ethic.
 
-| Tier | Levels | Orthodox | Demonic |
+| Path | Korean | Ethic | Endgame title |
 |---|---|---|---|
-| I | 1–20 | Qi Condensation | Demonic Qi Gathering |
-| II | 21–40 | Foundation Establishment | Demon Foundation |
-| III | 41–60 | Core Formation | Demonic Core Formation |
-| IV | 61–80 | Nascent Soul | Heavenly Demon Soul |
-| V | 81–90 | Martial King | Asura King |
-| VI | 91–99 | Martial Emperor | Archdemon Emperor |
-| VII | 100+ | **Martial God** | **Heavenly Demon** |
-
-**"Core Refinement" is not a realm.** It appeared in the original story
-document as the mentor's rank. The mentor's canonical rank is **Core Formation
-(Tier III)** — genuinely capable, middling in the wider murim, and nowhere near
-the top. This keeps him honest: skilled enough to teach fundamentals, far too
-weak to be a hidden grandmaster.
-
-> **Confirm:** mentor at Core Formation (Tier III). Flagged in
-> `docs/06-production/open-questions.md` in case a lower rank is preferred.
+| **Orthodox** | 정파 (Jeongpa) | Duty, restraint, the slow honest climb | Martial God (무신) |
+| **Unorthodox** | 사파 (Sapa) | Pragmatism, profit, survival. Morally grey, not evil | Sole Sovereign (독존) |
+| **Demonic** | 마교 (Magyo) | Appetite, domination, forbidden arts | Heavenly Demon (천마) |
 
 ---
 
 ## Factions
 
-Full detail in `docs/05-world/murim-factions.md`. Short forms for use in code
-and content:
+Full detail in `docs/05-world/murim-factions.md`.
 
-| Canonical | Korean | Alignment |
+| Canonical | Korean | Path |
 |---|---|---|
 | Murim Alliance | 무림맹 | Orthodox (political body) |
 | Namgung Clan | 남궁세가 | Orthodox |
@@ -88,36 +136,33 @@ and content:
 | Heavenly Demon Cult | 천마신교 | Demonic |
 | Blood Cult | 혈교 | Demonic |
 
-Faction alignment labels: **Jeongpa** (정파, orthodox), **Sapa** (사파,
-unorthodox), **Magyo** (마교, demonic).
-
 ---
 
 ## Progression terminology
 
-| Canonical | Meaning | Persists across loops? |
+| Canonical | Meaning | Persists? |
 |---|---|---|
-| **Level** | Cultivation level, 1–100+ | No — resets to 1 |
-| **Realm / Tier** | Derived from level | No — derived, so resets |
+| **Martial rank** | Ladder A. Skill as other martial artists see it | **Yes** |
+| **Cultivation realm / tier** | Ladder B. Internal energy | No |
 | **Technique** | A learned martial art, form, or move | **Yes** |
 | **Technique proficiency** | Mastery within a single technique | **Yes** |
 | **Knowledge flag** | A known fact about the world | **Yes** |
-| **Path drift** | Cumulative Orthodox ↔ Demonic position | **Yes** |
-| **Jadedness** | Psychological axis, rises with loops lived | **Yes** |
-| **Confidence** | Psychological axis, rises with realm reached | Partly — see `docs/01-narrative/character-axes.md` |
-| **Qi** | Spendable energy resource within a loop | No |
+| **Path drift** | Position on the Orthodox ↔ Demonic axis | **Yes** |
+| **Conviction** | How strongly the protagonist has committed to anything | **Yes** |
+| **Jadedness** | Rises with loops lived and anchors abandoned | **Yes** |
+| **Confidence** | Rises with realm reached | Partly |
+| **Qi** | Spendable energy within a loop | No |
 
-Full authority on what survives death: `docs/02-loop/persistence-matrix.md`.
+Full authority: `docs/02-loop/persistence-matrix.md`.
 
 ---
 
 ## Banned terms
 
-Never use these. They are Unity-prototype artefacts or genre mismatches.
-
 - Reincarnation, Reincarnation Sanctum, generation cycle, next generation
-- Respawn (for the player — enemies may still be said to respawn in tooling)
-- Core Refinement (as a realm name)
+- Respawn (for the player)
+- **"Level" as a design term** — use **martial rank** or **cultivation tier**.
+  Saying "level" hides which of the two ladders is meant
 - Constitution *choice* / path *lock* — drift is cumulative, never chosen
-- Passive evasion, suppression aura, terror aura — cut systems, see
-  `docs/04-technical/migration-from-unity.md`
+- Treating Unorthodox as a weaker Demonic, or as mere neutrality
+- Passive evasion, suppression aura, terror aura — cut systems

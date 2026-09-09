@@ -19,7 +19,7 @@ Per **D-007**:
 | How well you fight — options, reads, movelist | **Technique** (persistent) | No |
 | What you can survive — HP, damage ceiling, channelling capacity | **Cultivation** (per-loop) | Yes |
 
-A Level 1 player on loop 9 has a deep movelist, knows every opponent's tell,
+A Tier I player on loop 9 has a deep movelist, knows every opponent's tell,
 and fights beautifully. They also die in three hits. That gap *is* the game.
 
 ### What this means for tuning
@@ -27,7 +27,7 @@ and fights beautifully. They also die in three hits. That gap *is* the game.
 - **Encounters are tuned against technique tier, not character level.** An
   encounter's difficulty budget assumes the technique set the player is
   expected to hold when they first reach it.
-- **Every act must be survivable at Level 1** (see
+- **Every act must be survivable at Tier I** (see
   `docs/02-loop/loop-architecture.md` §2). Cultivation widens the margin; it is
   never the price of entry.
 - **Enemies do not scale to the player.** Content is authored and placed
@@ -70,7 +70,7 @@ defining, because it is what makes defence active rather than passive.
   breaking a stronger opponent
 
 **Why it matters here specifically:** posture is a *skill* stat, not a
-cultivation stat. A Level 1 player with excellent parry timing can break a
+cultivation stat. A Tier I player with excellent parry timing can break a
 far stronger opponent's posture and kill them from a position their health bar
 says is hopeless. That is D-007 expressed as a moment-to-moment mechanic, and
 it is probably the most important thing this combat system can do.

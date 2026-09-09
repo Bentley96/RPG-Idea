@@ -18,8 +18,17 @@ times.
 Jadedness is monotonic. It is the one thing in the game that only ever gets
 worse, and that is the point — it is the price of the gift.
 
-Fed directly by the loop counter (`docs/02-loop/persistence-matrix.md`) and
-expressed most strongly through the acknowledgment layer of loop acceleration
+**Two sources:**
+
+| Source | Weight |
+|---|---|
+| The loop counter — every death and return | Steady, small |
+| **Anchor advance** — deliberately abandoning part of your past (**D-010**) | Large, deliberate |
+
+The second matters more than the first. Dying is something that happens to the
+protagonist; abandoning an anchor is something they *choose*, and choosing to
+stop being able to return to who you were is the sharper wound. Expressed most
+strongly through the acknowledgment layer of loop acceleration
 (`docs/02-loop/replay-tax.md`).
 
 ---
@@ -96,30 +105,76 @@ different decisions — which is a far better outcome than a good/evil split.
 
 ---
 
-## Delivery: the open question
+## Voice: three orthogonal layers
 
-Both axes are stated to drive **dialogue and narration tone**. That is the
-boldest promise in the design and the most expensive to keep. Three approaches:
+Per **D-011**, the axes drive **diction and register**, not only sentiment. The
+model is three layers applied to one authored beat — never a line authored per
+combination.
 
-| Approach | Cost | Quality | Voice acting |
-|---|---|---|---|
-| **Authored variants** — write each significant line in multiple tonal versions | Very high writing budget: quadrants × lines | Highest, fully controlled | Possible |
-| **Tonal selection** — author lines once per *beat*, select from a small pool by axis position | Moderate | Good, needs discipline | Possible |
-| **Runtime generation** — an LLM re-voices lines against axis state | Low writing, high engineering | Variable, needs guardrails | No |
+| Layer | Driven by | Controls |
+|---|---|---|
+| **Register** | **Path drift** | Vocabulary, imagery, sentence shape, what the character notices |
+| **Affect** | **Jadedness** | Energy. Hope, novelty and reaction vs. flatness and economy |
+| **Stance** | **Confidence** | Hedging and deference vs. declarative certainty |
 
-**Recommendation: tonal selection.** Author each story beat once, with two to
-four tonal variants selected by axis quadrant, and reserve full per-line variation
-for the handful of beats that carry the theme. It keeps the promise where the
-player will actually feel it without multiplying the entire script.
+The layers are orthogonal, so a writer composes rather than enumerates: take
+the beat, apply the path's register, flatten it by jadedness, firm it up by
+confidence.
 
-Runtime generation is worth prototyping but should be treated as a whole
-technical subsystem — prompting, caching, latency, cost, offline fallback,
-tone drift, and the loss of voice acting — not a shortcut around the writing
-budget.
+### Register — set by path
 
-> **OPEN — blocking for narrative production.** Tracked in
-> `docs/06-production/open-questions.md`. Nothing in Acts 2–5 should be written
-> at scale until this is decided, because it determines the script's shape.
+Full table with worked examples in `docs/03-systems/paths-and-drift.md`.
+In brief: **Orthodox** is calm, measured, formal; **Unorthodox** is wry,
+transactional, colloquial; **Demonic** is blunt, hot, imperative.
+
+### Affect — set by jadedness
+
+| | Low jadedness | High jadedness |
+|---|---|---|
+| Reaction to novelty | Notices, remarks on it | Does not remark |
+| Emotional range | Full | Narrow, economical |
+| Word count | Generous | Spare |
+| Questions asked | Many, curious | Few, only load-bearing |
+| Repeated events | Fresh | "Again." |
+
+### Stance — set by confidence
+
+| | Low confidence | High confidence |
+|---|---|---|
+| Hedging | "I think", "maybe", "if you'd let me" | None |
+| Mood | Interrogative, conditional | Declarative, imperative |
+| Toward authority | Defers | Addresses as an equal |
+| Assertions | Qualified | Flat statements of fact |
+
+### Worked example
+
+*Refusing an unreasonable demand from a sect elder.*
+
+- **Orthodox, low jadedness, low confidence:** "Forgive me, elder — I don't
+  think I can do that. Not the way you're asking. Is there another road?"
+- **Orthodox, high jadedness, high confidence:** "No. Ask someone else, or ask
+  properly."
+- **Demonic, high jadedness, high confidence:** "No. Say it again and we'll
+  find out which of us the sect can spare."
+- **Unorthodox, low jadedness, high confidence:** "Sure. That's a big favour
+  though, and you're a long way from being owed one. What's it worth to you?"
+
+Same beat. Twelve quadrants of tone from one authored line plus three
+modifiers.
+
+### Production implications
+
+This resolves the *how* of Q-02. What remains open is the **budget**: how many
+beats get full layered variation, and how many ship in a single neutral voice.
+
+**Recommendation:** layer every line the protagonist speaks in a scene the
+player will replay across loops, and every beat that carries the theme. Ship
+incidental and functional dialogue in the path register only, without the
+jadedness and confidence layers. That keeps the promise where the player will
+feel it and caps the writing budget at roughly 3× rather than 12×.
+
+> **OPEN — coverage budget.** Which beats get full layering. Tracked in
+> `docs/06-production/open-questions.md`.
 
 ---
 

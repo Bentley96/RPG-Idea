@@ -8,13 +8,121 @@ mark the old entry `SUPERSEDED BY D-xxx` and write a new entry.
 
 ---
 
+## D-011 — Path sets language, not just tone
+**Status:** Locked
+
+The character axes drive **diction and register**, not only sentiment. Each
+path has a distinct voice: Orthodox is calm, measured and restrained;
+Unorthodox is wry, transactional and colloquial; Demonic is hot, blunt and
+imperative.
+
+Tone is produced by **three orthogonal layers** applied to one authored beat,
+never by authoring a line per combination:
+
+| Layer | Driven by | Controls |
+|---|---|---|
+| **Register** | Path drift | Vocabulary, imagery, sentence shape |
+| **Affect** | Jadedness | Hope vs. flatness, energy |
+| **Stance** | Confidence | Hedging vs. declarative |
+
+**Why:** keeps the promise of a protagonist built by play without multiplying
+the script by every axis combination. Resolves the delivery half of Q-02.
+
+See `docs/01-narrative/character-axes.md`.
+
+---
+
+## D-010 — The player chooses when to advance the anchor, and it is irreversible
+**Status:** Locked. Resolves Q-01.
+
+The anchor does not advance automatically at act boundaries. At defined points
+the player may **deliberately abandon their anchor** and set a later one.
+
+- **Irreversible.** Everything before the new anchor is permanently
+  inaccessible
+- **Player-triggered.** Never automatic, never a story event that happens to them
+- **Telegraphed.** The player must be told plainly what they are giving up
+- **Never softlocking.** Every anchor must leave the rest of the game
+  completable with what is obtainable from it. Hard constraint
+- **Costs jadedness.** Advancing the anchor is an act of letting go, and it
+  ticks the jadedness axis
+
+In fiction, the anchor is *the earliest moment the protagonist can still bear
+to return to*. Advancing it means choosing to stop being able to go back.
+
+**Why:** turns the replay tax into a strategic resource rather than a design
+problem, gives the player a real irreversible decision, and ties the mechanic
+directly to the theme of being slowly hollowed out.
+
+See `docs/02-loop/loop-architecture.md` §3.
+
+---
+
+## D-009 — Three paths, plus a conviction axis
+**Status:** Locked. Amends D-006. Resolves Q-11.
+
+Unorthodox (사파) is a **distinct third path**, not a midpoint of nothing and
+not a weaker Demonic. Sapa are pragmatic, profit-driven and morally grey; Magyo
+are the demonic cult. Conflating them is a terminology error.
+
+Two persistent scalars replace the single drift value:
+
+| Scalar | Range | Meaning |
+|---|---|---|
+| **Drift** | −100 Demonic … 0 Unorthodox … +100 Orthodox | Which road |
+| **Conviction** | 0 … 100 | How hard the protagonist has committed to anything. Accumulates from the magnitude of every drift-affecting action, regardless of direction |
+
+Unorthodox-coded actions — mercenary, transactional, self-serving — actively
+pull drift **toward** the centre while still **raising** conviction. The middle
+is therefore a destination that must be earned, not the residue of doing
+nothing.
+
+Four endings result: three committed paths, plus a low-conviction ending for a
+protagonist who lived many lives and became nothing — which is the jadedness
+theme paid off.
+
+See `docs/03-systems/paths-and-drift.md`.
+
+---
+
+## D-008 — Two ladders: martial rank persists, cultivation realm resets
+**Status:** Locked. Supersedes the prototype's single realm table.
+
+The world is **Korean murim**, and the faction design is entirely murim — but
+the original ladder was a **Chinese xianxia** cultivation ladder. The two
+traditions measure different things, and the game uses both:
+
+| Ladder | Tradition | Measures | On death |
+|---|---|---|---|
+| **Martial Rank** (무공 경지) | Korean murim | Skill, as other martial artists see it | **Persists** |
+| **Cultivation Realm** | Xianxia | Internal energy | **Resets** |
+
+Martial rank runs 삼류 → 이류 → 일류 → 절정 → 초절정 → 화경 → 현경 → 생사경 →
+자연경. Cultivation runs Qi Condensation → Foundation Establishment → **Core
+Refinement** → Core Formation → Nascent Soul → Soul Transformation → Martial
+King → Martial God, with distinct names per path.
+
+**Why:** the two ladders map exactly onto **D-007**. The thing that persists
+already had a name in the genre, and it is the murim rank ladder. Using both is
+more authentic to a Korean murim setting than either alone, and it makes the
+central design split legible to any reader who knows the genre.
+
+**Consequences:** "level" is banned as a design term — it hides which ladder is
+meant. Numeric level bands are removed; tiers are ordinal until progression
+work resumes (D-004). Core Refinement is restored at Tier III, returning the
+mentor to the rank the original story document gave him (resolves Q-12).
+
+Full ladders: `docs/00-canon/glossary.md`.
+
+---
+
 ## D-007 — Cultivation gates the ceiling; technique carries the fight
 **Status:** Locked
 
 Persistent technique and knowledge carry the *combat load*. Cultivation carries
 the *ceiling*.
 
-In practice: a Level 1 player on loop 8 fights markedly better than a Level 1
+In practice: a Tier I player on loop 8 fights markedly better than a Tier I
 player on loop 1 — better movelist, better reads, better options — and can beat
 opponents that killed them before. What cultivation controls is what they can
 **survive**: raw HP, the damage ceiling, and which techniques their body can
@@ -33,6 +141,7 @@ from this enemy," not "does this player out-stat this enemy."
 
 ## D-006 — Path alignment is cumulative drift, never a locked choice
 **Status:** Locked. Supersedes the prototype's locked-at-respawn constitution.
+**Amended by D-009** — extended from two paths to three, plus a conviction axis.
 
 The Orthodox / Demonic axis is a **cumulative scalar** that accrues from
 actions across all loops. It is never locked, never presented as a menu
@@ -99,7 +208,7 @@ at the same narrative moment, under authorial control. Everything after belongs
 to the player.
 
 **Consequences:** from loop 2, the game must tolerate death at *any* point in
-*any* act. Every act must be enterable and completable at Level 1 with the
+*any* act. Every act must be enterable and completable at Tier I with the
 technique set the player is expected to hold by then. This is a hard content
 constraint — see `docs/02-loop/loop-architecture.md`.
 

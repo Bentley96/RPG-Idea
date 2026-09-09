@@ -61,7 +61,7 @@ lets players trivialise authored encounters and destroys the pacing the linear
 structure depends on. See the meditation caution in
 `docs/03-systems/cultivation-and-realms.md`.
 
-**3. Every act must be completable at Level 1** with the expected technique set
+**3. Every act must be completable at Tier I** with the expected technique set
 (`docs/02-loop/loop-architecture.md`). This is a hard constraint on every
 difficulty curve in the game.
 

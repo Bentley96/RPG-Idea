@@ -34,9 +34,9 @@ depends on those rules being learnable.
 
 | System | On death | Notes |
 |---|---|---|
-| Cultivation level | ○ | Returns to 1. Always |
-| Level XP | ○ | Returns to 0 |
-| Realm / tier | ○ | Derived from level, so resets with it |
+| Cultivation tier | ○ | Returns to Tier I. Always |
+| Cultivation progress | ○ | Returns to 0 |
+| Realm name | ○ | Derived from tier and drift |
 | Max HP | ○ | Returns to base |
 | Current HP | ○ | Full at anchor |
 | Qi (current) | ○ | Empty at anchor |
@@ -47,12 +47,13 @@ depends on those rules being learnable.
 
 | System | On death | Notes |
 |---|---|---|
+| **Martial rank** (무공 경지) | ● | Ladder A. Derived from technique and proficiency, never from qi (**D-008**) |
 | Technique unlocks (movelist) | ● | The heart of D-007 |
 | Technique proficiency | ● | Mastery within each technique |
 | Sect style masteries | ● | |
-| Gyeonggong — unlocked | ● | Usability still gated by current level |
-| Geomgi — unlocked | ● | Usability still gated by current level |
-| Oegong — unlocked | ● | Usability still gated by current level |
+| Gyeonggong — unlocked | ● | Usability still gated by current cultivation tier |
+| Geomgi — unlocked | ● | Usability still gated by current cultivation tier |
+| Oegong — unlocked | ● | Usability still gated by current cultivation tier |
 | Combat instinct / reads | ● | Held by the *player*, not the save file |
 
 > **Unlocked ≠ usable.** The three universal arts persist as knowledge forever,
@@ -76,9 +77,10 @@ depends on those rules being learnable.
 | System | On death | Notes |
 |---|---|---|
 | Loop counter | ● | Monotonic. Never resets |
-| Jadedness | ● | Increments each loop. Never decreases |
+| Jadedness | ● | Increments each loop, and sharply on anchor advance (**D-010**). Never decreases |
 | Confidence | ◐ | Persistent floor from lifetime peak realm, plus a current-loop component. See `docs/01-narrative/character-axes.md` |
-| Path drift | ● | Cumulative across all loops (**D-006**) |
+| Path drift | ● | Cumulative across all loops (D-006, **D-009**) |
+| Conviction | ● | Monotonic. Never decreases (**D-009**) |
 
 ### World
 
@@ -108,7 +110,8 @@ depends on those rules being learnable.
 
 | System | On death | Notes |
 |---|---|---|
-| Anchor position | ● | Advances at act boundaries only |
+| Anchor position | ● | Advances only when the player chooses, irreversibly (**D-010**) |
+| Abandoned content | ● | Content behind an advanced anchor stays permanently inaccessible |
 | Act / story progress | ● | Story does not rewind with the world |
 | Settings, accessibility | ● | |
 

@@ -1,126 +1,175 @@
 # Paths & Drift
 
-The Orthodox ↔ Demonic morality system. Per **D-006** this is a **cumulative
-scalar**, never a locked choice.
+The morality system. **Three paths** (**D-009**), cumulative, never chosen
+(**D-006**).
 
 ---
 
-## What changed from the prototype
+## Three roads, not two
 
-The archived Unity document had the player *select* a "core constitution" at
-respawn, after which the choice was permanently locked and the UI buttons
-greyed out. That was a prototype convenience for testing two damage tables.
+Unorthodox (사파, Sapa) is a **distinct path**, not a weaker Demonic and not
+the absence of commitment. This distinction is genre-correct and load-bearing:
 
-The narrative design always called for drift: *"the player's drift between them
-is cumulative across reincarnations rather than a single locked choice."* The
-story document was right; the prototype was expedient. Drift wins.
+| Path | Korean | Ethic | Attitude to power | Endgame |
+|---|---|---|---|---|
+| **Orthodox** | 정파 | Duty, restraint, the slow honest climb | Power is a responsibility | **Martial God** (무신) |
+| **Unorthodox** | 사파 | Pragmatism, profit, survival | Power is leverage | **Sole Sovereign** (독존) |
+| **Demonic** | 마교 | Appetite, domination, forbidden arts | Power is appetite | **Heavenly Demon** (천마) |
+
+Sapa are not villains. They lie, deal, steal and survive; they keep their
+bargains because a reputation is an asset. A Sapa protagonist is not a failed
+hero or a restrained demon — they are someone who decided that ideals are
+expensive and they cannot afford them.
 
 ---
 
-## The drift scalar
+## Two scalars
 
-A single persistent value:
+### Drift — which road
 
 ```
    -100 ─────────────── 0 ─────────────── +100
-  Heavenly Demon    unaligned      Martial God
-     (Magyo)                        (Jeongpa)
+   Heavenly Demon    Sole Sovereign    Martial God
+      (Magyo)            (Sapa)         (Jeongpa)
 ```
 
-| Property | Value |
-|---|---|
-| Range | −100 (fully demonic) to +100 (fully orthodox) |
-| Starting value | 0 |
-| Persists across loops? | **Yes** — never reset by death |
-| Directly chosen by the player? | **No** — never presented as a menu |
-| Visible to the player? | Indirectly — see below |
+### Conviction — how hard you committed
 
-### What moves it
+```
+   0 ───────────────────────────────── 100
+   hollow                          devoted
+```
 
-Actions, not dialogue-wheel selections. Candidate sources:
+Conviction accumulates from the **magnitude** of every drift-affecting action,
+regardless of direction. It never decreases.
 
-| Source | Direction |
-|---|---|
-| Techniques used habitually — absorption and blood arts vs. disciplined forms | Toward the technique's alignment |
-| Cultivation methods adopted | Strong pull |
-| Pills consumed | Moderate pull |
-| Faction alliances and betrayals | Moderate |
-| Resolution of moral situations — mercy, restraint, cruelty, expedience | Small but frequent |
-| Killing the defeated, or sparing them | Small, cumulative |
+**Why two scalars.** A single axis makes Unorthodox the residue of doing
+nothing, which is exactly the error the path distinction exists to avoid.
+Unorthodox-coded actions pull drift **toward centre** while **raising**
+conviction — so the middle is a destination you arrive at by choosing it
+repeatedly, not by failing to choose.
 
-**Design intent:** drift should be something the player notices *having
-happened*, not something they steer. The player who takes every shortcut
-because shortcuts are efficient should arrive at the Heavenly Demon and
-recognise how they got there.
+| | **Low conviction** | **High conviction** |
+|---|---|---|
+| **Centre drift** | Hollow — lived many lives, became nothing | **Sapa.** Committed to pragmatism |
+| **Edge drift** | Drifting, not yet arrived | **Devoted.** Orthodox or Demonic |
+
+| Property | Drift | Conviction |
+|---|---|---|
+| Persists across loops | **Yes** | **Yes** |
+| Reset by death | No | No |
+| Directly chosen | **No** | **No** |
+| Shown as a number | No | No |
+
+### What moves them
+
+Actions, never a dialogue wheel.
+
+| Source | Drift | Conviction |
+|---|---|---|
+| Techniques used habitually | Toward that technique's path | + |
+| Cultivation methods adopted | Strong pull | ++ |
+| Pills consumed | Moderate pull | + |
+| Sparing a beaten opponent | Toward Orthodox | + |
+| Killing the surrendered | Toward Demonic | + |
+| Taking payment to look away | Toward centre | + |
+| Trading information for advantage | Toward centre | + |
+| Breaking a promise for gain | Toward centre | + |
+| Absorbing another's energy | Strong Demonic | ++ |
+| Upholding a duty at personal cost | Strong Orthodox | ++ |
+
+> Drift should be something the player notices *having happened*, not something
+> they steer. The player who takes every shortcut because shortcuts are
+> efficient should arrive at the Heavenly Demon and recognise the road.
 
 ### Visibility
 
-The raw number is never shown. The player perceives drift through:
+Never shown as numbers. The player perceives both through:
 
-- **Realm names.** The displayed realm title shifts column as drift crosses
-  thresholds — the same Level 45 reads as *Core Formation* or *Demonic Core
-  Formation*
-- **Technique availability** (below)
-- **NPC reaction.** Orthodox sects grow warier; unorthodox contacts grow warmer
-- **Tone.** Narration and the protagonist's voice colour with drift, alongside
-  the psychological axes (`docs/01-narrative/character-axes.md`)
-- **Visual language.** Qi effect colour, and eventually the protagonist's
-  appearance
+- **Realm names.** The same cultivation tier reads as *Core Formation*,
+  *Blackened Core* or *Demonic Core Formation* (`docs/00-canon/glossary.md`)
+- **Language.** The protagonist's own voice changes — see below
+- **Technique availability**
+- **NPC reaction.** Orthodox sects grow warier; Hao Clan contacts grow warmer
+- **Visual language.** Qi effect colour, and eventually appearance
+
+---
+
+## The three voices
+
+Per **D-011**, path drives **diction and register**, not just sentiment. This
+is the concrete spec for writers and for content generation.
+
+| | **Orthodox** | **Unorthodox** | **Demonic** |
+|---|---|---|---|
+| **Register** | Calm, measured, formal | Wry, transactional, colloquial | Blunt, hot, imperative |
+| **Sentence shape** | Balanced and complete; subordinate clauses | Clipped; deflects with questions | Short. Declarative. Fragments |
+| **Vocabulary** | duty, form, discipline, patience, worth | price, angle, owed, deal, worth it | break, take, burn, kneel, enough |
+| **Metaphor source** | Water, stone, seasons; the blade as discipline | Coin, debt, roads, weather | Fire, hunger, teeth, storm |
+| **Toward an enemy** | Names them. Offers the out | Prices them | Dismisses or threatens |
+| **On killing** | Regret, or necessity accepted | Cost and benefit | Appetite |
+| **Under insult** | Absorbs it | Files it away for later | Answers it |
+| **Profanity** | None | Casual | Frequent |
+| **Silence means** | Consideration | Calculation | Contempt |
+
+### The same beat, three ways
+
+*The protagonist stands over a beaten opponent who begs.*
+
+- **Orthodox:** "Stand up. You fought past your ability — that is not nothing.
+  Go home, and do not take a job like this again."
+- **Unorthodox:** "Relax. You're worth more talking than bleeding. Who paid
+  you, and what would it cost me to hear the rest?"
+- **Demonic:** "Beg quieter. You had a blade in your hand a moment ago. Now you
+  have this. Choose faster — I'm bored."
+
+Layered on top: **jadedness** flattens the affect, **confidence** removes the
+hedging. See `docs/01-narrative/character-axes.md`.
 
 ---
 
 ## Effect 1 — Technique gating and early unlocks
 
-Sufficient drift unlocks path-specific techniques. Crucially, drift persists
-while cultivation does not, which produces the effect described in the brief:
+Sufficient drift plus conviction unlocks path techniques. Because both persist
+while cultivation does not:
 
-> Techniques can become available **early in a subsequent loop**.
+> Path techniques can become available **early in a subsequent loop** — the
+> body starts over, the nature does not.
 
-A player deep into demonic drift begins a new loop at Level 1 — but demonic
-techniques that were previously gated behind drift thresholds are already
-available to them, because their *nature* carried across even though their
-*body* did not.
+| Band | Requirement | Effect |
+|---|---|---|
+| **Unaligned** | Low conviction | Universal arts and neutral techniques only |
+| **Committed** | Moderate drift + conviction | Path techniques unlock; some cross-path options close |
+| **Devoted** | High drift + conviction | Deep path techniques; strong early-loop availability; the opposing path largely shut |
 
-This is a genuinely elegant interaction. It gives drift a mechanical reward
-that scales with commitment, it makes late loops feel materially different from
-early ones, and it reinforces the persistence rules without adding a new
-currency.
+Bands are evaluated per path, so a Devoted Sapa is as gated as a Devoted
+Orthodox — just around the centre rather than an edge.
 
-| Drift band | Effect |
-|---|---|
-| ±0–25 | Unaligned. Only universal arts and neutral techniques |
-| ±26–60 | Committed. Path techniques unlock; some cross-path options close |
-| ±61–100 | Devoted. Deep path techniques; strong early-loop availability; the opposing path is largely shut |
-
-> **OPEN:** whether closing off the opposite path is hard or soft, and whether
-> extreme drift can be walked back. Recommendation: **soft closure, very
-> expensive reversal** — redemption and fall should both be possible but should
-> cost multiple loops of deliberate effort. Tracked in
-> `docs/06-production/open-questions.md`.
+**Closure is soft; reversal is expensive.** Redemption and fall are both
+possible, and both should cost multiple loops of deliberate, conviction-raising
+action in the new direction. Drift moves; conviction never falls, so a
+protagonist who switches roads late is *devoted to having changed* — which is
+its own characterisation.
 
 ---
 
-## Effect 2 — Ending determination
+## Effect 2 — Endings
 
-Fallout 3 model, per your decision. Drift is measured at the end of the final
-act and selects which ascension resolves.
+Fallout-style: measured at the end of the final act, never a choice prompt.
 
-| Final drift | Ending |
-|---|---|
-| Strongly positive | **Martial God.** Power matched by control |
-| Strongly negative | **Heavenly Demon.** Overwhelming, corrupting tyranny |
-| Near zero | **Open** — see below |
+| Drift | Conviction | Ending |
+|---|---|---|
+| Strongly positive | High | **Martial God** (무신) — power matched by control |
+| Near centre | High | **Sole Sovereign** (독존) — answers to no one, serves no ideal |
+| Strongly negative | High | **Heavenly Demon** (천마) — overwhelming, corrupting tyranny |
+| Any | Low | **The Hollow** — lived many lives, became nothing |
 
-> **OPEN — the unaligned ending.** A player who reaches the end near zero has
-> committed to nothing. Options: a third distinct ending (the hermit / the one
-> who refuses both), a weaker version of the nearer ending, or a deliberate
-> failure state. A third path is the most interesting and the most expensive.
-> Tracked in `docs/06-production/open-questions.md`.
+The fourth ending is not a failure state to be avoided by a checklist. It is
+the honest outcome for a protagonist who spent every loop optimising and never
+committed, and it is where the jadedness theme lands hardest.
 
-The ending is **not** a final-scene choice prompt. It is the sum of how the
-player lived every loop — which is the story document's stated thesis:
-*"the story's emotional ending is authored by the player's habits, not scripted
-in advance."*
+> The ending is the sum of how the player lived every loop — the story
+> document's stated thesis, mechanised.
 
 ---
 
@@ -129,19 +178,21 @@ in advance."*
 Pill alignment checks against **current drift**, not a locked constitution
 (`docs/03-systems/cultivation-and-realms.md`).
 
-Consequences worth noting:
-- A near-zero player is at risk from pills of **both** alignments. Neutrality
-  is genuinely inconvenient, which is thematically correct
 - Committing to a path makes that path's pills safe, accelerating it further
-- Deliberately taking an opposite-alignment pill to slow one's drift is a
-  catastrophic-damage decision, which is a nice bit of desperation gameplay
+- A **centre-drift** protagonist can safely take *Sapa* pills, and is at risk
+  from both Orthodox and Demonic ones — neutrality is genuinely inconvenient,
+  which is thematically correct
+- Deliberately taking an opposing pill to slow drift is a
+  catastrophic-damage decision, and a good bit of desperation gameplay
 
 ---
 
 ## Implementation notes
 
-- Single float on `SoulSave` (`docs/02-loop/persistence-matrix.md`)
-- Drift sources are DataTable-driven (`DT_DriftSources`) so tuning needs no code
+- Two floats on `SoulSave` (`docs/02-loop/persistence-matrix.md`)
+- Drift sources are DataTable-driven (`DT_DriftSources`) — each row carries a
+  drift delta and a conviction delta
 - Band thresholds are data, not constants
-- If GAS is adopted, bands are Gameplay Tags (`Path.Drift.Demonic.Devoted`) so
-  ability requirements are declarative
+- Expose to content as a **band enum** (`Path_Sapa_Devoted`), never raw floats
+- If GAS is adopted, bands are Gameplay Tags (`Path.Sapa.Devoted`) so ability
+  requirements stay declarative
