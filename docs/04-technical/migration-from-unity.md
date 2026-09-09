@@ -83,22 +83,17 @@ Kept in spirit, changed in meaning.
 
 ## Repository migration
 
-The repo still contains the Unity project: `Assets/`, `ProjectSettings/`,
-`Packages/`, `RPG Idea.slnx`, and Unity-specific `.gitignore` /
-`.gitattributes`. None of it has gameplay code.
+**Done.** This repository was converted in place rather than restarted, which
+resolves Q-17.
 
-**Recommended sequence:**
+| Step | Status |
+|---|---|
+| Delete Unity scaffolding — `Assets/`, `ProjectSettings/`, `Packages/`, `.vscode/`, `RPG Idea.slnx` | **Done** |
+| Replace `.gitignore` / `.gitattributes` with UE versions, Git LFS for `.uasset`, `.umap` and binary art | **Done** |
+| Keep `docs/` unchanged | **Done** |
+| Create the UE5 project skeleton | **Next** — see `docs/04-technical/bootstrap.md` |
+| Record verified build/test commands in `CLAUDE.md` §4 | Part of bootstrap |
 
-1. Create the UE5 project skeleton (5.5+), modules per
-   `docs/04-technical/technical-design.md` §4
-2. Replace `.gitignore` and `.gitattributes` with UE versions; configure Git
-   LFS for `.uasset`, `.umap` and binary art
-3. Delete the Unity scaffolding — `Assets/`, `ProjectSettings/`, `Packages/`,
-   `.vscode/`, `RPG Idea.slnx`
-4. Keep `docs/` exactly as it is
-5. Write the root `CLAUDE.md` build/test commands once the project builds
-
-> Deleting the Unity project is deliberately **not** done as part of this
-> documentation change. It is a destructive step and belongs in its own commit,
-> taken once you have decided whether to convert this repository or start a
-> clean one and bring `docs/` across.
+Nothing of value was lost: the Unity project contained no gameplay code, its
+design document is archived at `docs/legacy/unity-prototype-notes.md`, and the
+full Unity tree remains recoverable from git history at commit `cd9ecf6`.

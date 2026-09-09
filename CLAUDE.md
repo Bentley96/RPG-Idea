@@ -80,17 +80,20 @@ These are not preferences.
 
 ## 3. Repository state
 
-> **The repository currently contains the abandoned Unity 6 / URP project**
-> (`Assets/`, `ProjectSettings/`, `Packages/`, `RPG Idea.slnx`, and Unity
-> `.gitignore` / `.gitattributes`). It has **no gameplay code** — the scripts
-> named in the archived design document were never committed.
+> **The Unity project has been removed.** The repo now contains only `docs/`,
+> `CLAUDE.md`, and UE-appropriate `.gitignore` / `.gitattributes` with Git LFS
+> configured for `.uasset`, `.umap` and binary art.
 >
-> The UE5 project has not been created yet. See
-> `docs/04-technical/migration-from-unity.md` for the migration sequence and
-> `docs/06-production/vertical-slice.md` for what to build first.
+> **The UE5 project does not exist yet.** Creating it is the next task, and it
+> must be done on a machine with the Editor installed — a `.uproject` and its
+> module scaffolding cannot be generated from a terminal alone.
+>
+> **Follow `docs/04-technical/bootstrap.md`.** It is a step-by-step runbook
+> with a definition of done and an explicit out-of-scope list.
 
-Do not add code to the Unity project. Do not treat the Unity scaffolding as the
-project structure.
+The archived Unity design document remains at `docs/legacy/` for reference
+only. What was salvaged and what was cut is recorded in
+`docs/04-technical/migration-from-unity.md`.
 
 ---
 
@@ -154,7 +157,8 @@ in `docs/02-loop/knowledge-as-key.md`.
 
 ## 7. Current priorities
 
-1. Create the UE5 project skeleton and fill in §4 above
+1. Create the UE5 project skeleton — **follow `docs/04-technical/bootstrap.md`**
+   — and fill in §4 above with verified commands
 2. Save architecture + persistence tests — **before any content**
 3. Loop state machine: anchor → death → interlude → anchor
 4. Vertical slice Act 1 content

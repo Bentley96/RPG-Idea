@@ -11,7 +11,9 @@ it from here.
 (Core Refinement, Tier III) · Q-02 delivery model → **D-011** (budget still
 open below) · Q-16 animation model → **D-012** (narrowed to weapon count) ·
 Q-18 anchor placement → **D-013** (one per act boundary, three acts) · Q-03
-posture → **D-014** (hidden, escalating, deterministic).
+posture → **D-014** (hidden, escalating, deterministic) · Q-17 repository
+migration → converted in place; Unity scaffolding removed, UE `.gitignore` /
+`.gitattributes` with LFS committed.
 
 ---
 
@@ -159,8 +161,3 @@ shapes encounter and reward design.
 Standing caution: a martial arts game *is* its animation — the whole fantasy is
 beautiful movement, and stiff or mismatched work reads as cheap instantly. Two
 weapons that look correct beat five that do not.
-
-### Q-17 — Repository migration
-**Doc:** `docs/04-technical/migration-from-unity.md`
-Convert this repository to UE5, or start clean and bring `docs/` across? The
-Unity scaffolding should not survive alongside the UE5 project either way.

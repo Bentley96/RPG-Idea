@@ -55,6 +55,7 @@ A linear, narrative, regression-driven murim RPG for **Unreal Engine 5**.
 | Doc | Contents |
 |---|---|
 | [`technical-design.md`](04-technical/technical-design.md) | UE5 architecture, GAS, saves, DataTables |
+| [`bootstrap.md`](04-technical/bootstrap.md) | **Step-by-step runbook for creating the UE5 project** |
 | [`migration-from-unity.md`](04-technical/migration-from-unity.md) | Salvaged, cut, and reframed |
 
 ### 05 — World
@@ -112,4 +113,5 @@ A linear, narrative, regression-driven murim RPG for **Unreal Engine 5**.
 | Character voice | Model locked (D-011); coverage budget open (Q-02) |
 | Animation model | **Locked** (D-012); weapon count for v1 open (Q-16) |
 | Progression & economy | **Deferred** (D-004) |
-| UE5 project | **Not started** — repo still holds the abandoned Unity project (Q-17) |
+| Repo migration | **Done** — Unity removed, UE gitignore/gitattributes + LFS in place |
+| UE5 project | **Not started** — next task, follow `04-technical/bootstrap.md` |
