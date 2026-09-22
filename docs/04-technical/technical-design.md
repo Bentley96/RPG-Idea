@@ -21,6 +21,7 @@ spend that advantage rather than waste it.
 | **Everything data-driven via CSV-backed `ScriptableObject`s** | Frame values, enemy stats, pill tiers, drift sources, knowledge flags, dialogue — all editable as text, all diffable, all AI-accessible. Worth more than any amount of prompt engineering |
 | **Tests from day one** | AI-assisted changes need a pass/fail signal, and Unity Test Framework runs headless from the command line. Without a build-and-test loop, AI-assisted work degrades quickly |
 | **A `CLAUDE.md` at repo root** | Conventions, build commands, hard rules. Read before every task |
+| **Unity MCP for Editor-shaped work** | Unity 6 ships an official MCP server (`com.unity.ai.assistant`). A local AI client can drive scenes, assets and the console directly. Setup is Step 6 of `bootstrap.md` |
 
 > **A caution on YAML editing.** Scenes and prefabs being *readable* is not
 > permission to hand-author them. They are graphs of GUIDs and local file IDs,

@@ -187,7 +187,82 @@ versions, and update §3 to say the Unity project now exists.
 
 ---
 
-## Step 6 — First level: the alley
+## Step 6 — Connect Claude to the Editor over MCP
+
+Unity 6 ships an **official MCP server** in the AI Assistant package
+(`com.unity.ai.assistant`). It lets a local AI client drive the Editor —
+scenes, assets, scripts and the console — over the Model Context Protocol.
+Set it up before the alley, because it can help build the alley.
+
+### Enable the bridge
+
+1. **Edit → Project Settings → AI → Unity MCP**
+2. Confirm **Unity Bridge** shows a green **Running** indicator. If it is
+   stopped, select **Start**
+
+The bridge starts automatically with the Editor thereafter, and installs a
+relay binary to `~/.unity/relay/` (`%USERPROFILE%\.unity\relay\relay_win.exe`
+on Windows).
+
+### Connect the client
+
+1. In the same settings panel, expand **Integrations**
+2. Select **Claude Code**, then **Configure** — this writes the client config
+   for you
+3. Run Claude Code from the repo root. On first connection Unity shows a
+   **Pending Connection**
+4. Return to **Edit → Project Settings → AI → Unity MCP** and select
+   **Accept**
+
+Approved clients reconnect automatically after that. If a client needs
+configuring by hand, the server entry is the relay binary with the `--mcp`
+flag:
+
+```json
+{
+  "mcpServers": {
+    "unity-mcp": {
+      "command": "%USERPROFILE%\\.unity\\relay\\relay_win.exe",
+      "args": ["--mcp"]
+    }
+  }
+}
+```
+
+### What this does and does not give you
+
+| | |
+|---|---|
+| **Gives you** | Scene and asset manipulation, script editing, and console access from a local AI client, against the open Editor |
+| **Requires** | The Editor to be **open**. The bridge is the Editor; no Editor, no tools |
+| **Does not reach** | Any cloud or remote Claude session. The relay is a local binary on localhost, so only Claude Code running on this machine can use it |
+
+> **Split the work accordingly.** Editor-shaped tasks — building the alley,
+> wiring prefabs, inspecting the console — belong to local Claude Code over
+> MCP. Repository-shaped tasks — C# systems, the save layer, tuning CSVs,
+> documentation, pull requests — do not need the Editor at all and are better
+> done from the repository, where changes are reviewable in a diff.
+
+> **Watch the memory.** The Editor, the relay and an AI client are all running
+> at once on a 16GB machine (**D-015**). If things get tight, the repository
+> half of the work needs none of them open.
+
+### If the official server is not enough
+
+`CoplayDev/unity-mcp` is a mature third-party alternative (MIT, ~47 tools,
+Unity 2021.3–6.x) that additionally exposes **test running, profiling and
+builds**. It needs Python 3.10+ and installs from a git URL through the
+Package Manager.
+
+Start with the official server — it is first-party, needs no Python, and
+configures Claude Code for you. Reach for Coplay only if a specific missing
+tool justifies the extra dependency. Test running in particular does **not**
+justify it: the headless command in Step 5 already covers that, and it runs
+without the Editor.
+
+---
+
+## Step 7 — First level: the alley
 
 **`Assets/Regressor/Scenes/Alley_Anchor.unity`**
 
@@ -238,7 +313,7 @@ this step.
 
 ---
 
-## Step 7 — Commit
+## Step 8 — Commit
 
 ```
 git add -A
@@ -261,6 +336,7 @@ references for everyone but you.
 - [ ] Project opens in the Editor without errors
 - [ ] EditMode tests run headless from the command line
 - [ ] `Alley_Anchor` is walkable, collision works
+- [ ] Unity MCP bridge running, Claude Code connected and accepted
 - [ ] `Assets/Regressor/` layout in place
 - [ ] `Regressor.Core` and `Regressor.Editor` assemblies exist and compile
 - [ ] `Data/CSV/` exists
