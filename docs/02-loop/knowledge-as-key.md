@@ -51,7 +51,7 @@ the flag before they can *tell someone else* about it.
 | **Social** | `K_SOC_` | Compressed relationship arcs | What the innkeeper's daughter died of |
 | **Combat** | `K_CBT_` | Readable tells, counter prompts | The saber master always feints left first |
 
-Each flag is a DataTable row:
+Each flag is a tuning-table row:
 
 | Field | Meaning |
 |---|---|

@@ -8,6 +8,54 @@ mark the old entry `SUPERSEDED BY D-xxx` and write a new entry.
 
 ---
 
+## D-015 — Engine is Unity 6 (URP). Supersedes D-001
+**Status:** Locked. Supersedes **D-001**.
+
+Unreal Engine 5 is abandoned. The project is built in **Unity 6 LTS** with the
+**Universal Render Pipeline**.
+
+### Why
+
+The reason is hardware, not preference. The development machine has **16GB of
+RAM**, and the UE5 Editor is not workable inside that budget for this project —
+shader compilation and editor overhead exhaust it. An engine the developer
+cannot run is not a trade-off to be managed; it is a blocker.
+
+Unity 6 runs comfortably in the same budget, and URP is the lighter of its
+render pipelines — which also suits the flat-shaded, low-poly look the
+blockout guidance already called for.
+
+### What this does not change
+
+**Nothing in the game design.** The regression loop, the persistence matrix,
+the two ladders (**D-008**), the three paths (**D-009**), testaments
+(**D-013**) and posture (**D-014**) are engine-neutral and carry across
+untouched. Only `docs/04-technical/` and the tooling conventions in
+`CLAUDE.md` are affected.
+
+### What it changes
+
+| Area | Consequence |
+|---|---|
+| **Ability architecture** | GAS does not exist in Unity. The recommendation in the TDD is void and the question reopens — see **Q-05** |
+| **Tuning data** | DataTables become CSV-backed `ScriptableObject`s. The rule is unchanged: the **CSV** is the source of truth |
+| **Code** | C# `MonoBehaviour` / plain classes, assembly definitions in place of modules |
+| **Scenes and prefabs** | `.unity`, `.prefab` and `.asset` are **YAML text**, not binary. They are diffable and mergeable — a real gain for AI-assisted work over `.uasset` |
+| **Version control** | LFS still needed, but only for genuine binaries — textures, FBX, audio. Not for scenes |
+| **Testing** | Unity Test Framework, runnable headless from the command line. Persistence tests remain the highest-value tests in the project |
+
+### The archived prototype is still not canon
+
+The repository returns to Unity, but `docs/legacy/unity-prototype-notes.md`
+**remains superseded and must not be built from.** The objections to it were
+never about the engine — they were the reincarnation framing (**D-005**), the
+locked constitution choice (**D-006**), permanent stat multipliers
+(**D-007**), passive evasion RNG (**D-014**) and sandbox-brawler scope
+(**D-002**). Every one of those still stands. Returning to Unity rehabilitates
+the toolchain, not the design.
+
+---
+
 ## D-014 — Posture is hidden, escalating, and deterministic
 **Status:** Locked. Resolves Q-03.
 
@@ -416,9 +464,13 @@ not generated. Encounters are placed, not scaled.
 ---
 
 ## D-001 — Engine is Unreal Engine 5
-**Status:** Locked
+**Status:** **SUPERSEDED BY D-015.** The engine is now Unity 6 (URP)
+
+*Retained for the record. This decision moved the project off the abandoned
+Unity prototype and onto UE5; **D-015** moved it back to Unity for hardware
+reasons, without restoring the prototype's design.*
 
 The Unity 6 / URP project is abandoned. Its design document is archived at
 `docs/legacy/unity-prototype-notes.md` and is not to be built from.
 
-See `docs/04-technical/migration-from-unity.md`.
+See `docs/04-technical/prototype-postmortem.md`.

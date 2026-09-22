@@ -102,7 +102,7 @@ Be honest about this — do not over-claim from a successful slice.
 
 These stay open until it is playable, deliberately:
 
-- Final GAS commitment (`docs/04-technical/technical-design.md` §2)
+- Ability system: hand-rolled or third-party (`docs/04-technical/technical-design.md` §2, **Q-05**)
 - Posture as a core system (`docs/03-systems/combat.md`)
 - All progression and economy numbers (**D-004**)
 - Anchor advance mechanism (`docs/02-loop/loop-architecture.md` §3)
@@ -111,8 +111,8 @@ These stay open until it is playable, deliberately:
 
 ## Build order
 
-1. UE5 project skeleton, modules, `CLAUDE.md` build commands
-2. Save architecture + persistence automation tests — **before any content**
+1. Unity project skeleton, assemblies, `CLAUDE.md` build commands
+2. Save architecture + persistence tests — **before any content**
 3. Loop state machine: anchor → death → interlude → anchor
 4. Core combat against one enemy archetype
 5. The three archetypes, and the authored death encounter

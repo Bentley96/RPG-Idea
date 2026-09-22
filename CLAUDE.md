@@ -3,7 +3,7 @@
 Read this before any task in this repository.
 
 **Project:** *The Regressor's Path* — a linear, narrative, regression-driven
-murim RPG for **Unreal Engine 5**.
+murim RPG for **Unity 6 LTS (URP)**.
 
 ---
 
@@ -68,70 +68,90 @@ These are not preferences.
 - Do not invent progression numbers. Economy work is deferred (D-004)
 
 **Engine**
-- This is a **UE5** project. The archived design document describes Unity — do
-  not follow it, and do not generate Unity C#
-- **C++ first.** Gameplay logic goes in C++, not Blueprint graphs. Blueprint is
-  for thin glue and designer tuning only
-- **Never hand-edit `.uasset` or `.umap`.** They are binary and unmergeable
-- **All tuning lives in CSV-backed DataTables**, never hardcoded. If a designer
-  would want to change a number, it belongs in a DataTable
+- This is a **Unity 6 LTS / URP** project (**D-015**). Unreal Engine 5 is
+  abandoned; ignore UE-era instructions in git history and do not generate C++
+- **The archived prototype doc is still not canon.** Returning to Unity
+  rehabilitates the toolchain, not the design. `docs/legacy/` stays superseded
+  — see `docs/04-technical/prototype-postmortem.md`
+- **All gameplay logic in C#.** No visual scripting
+- **Read `.unity` and `.prefab` freely — they are YAML — but do not hand-author
+  them.** They are graphs of GUIDs and file IDs; structural changes go through
+  the Editor or a checked-in editor script
+- **Asset Serialization stays Force Text**, and `.meta` files are always
+  committed
+- **All tuning lives in CSV-backed ScriptableObjects**, never hardcoded. The
+  **CSV** is the source of truth and is edited directly; the `.asset` is
+  re-imported, never hand-edited. If a designer would want to change a number,
+  it belongs in a table
 
 ---
 
 ## 3. Repository state
 
-> **The Unity project has been removed.** The repo now contains only `docs/`,
-> `CLAUDE.md`, and UE-appropriate `.gitignore` / `.gitattributes` with Git LFS
-> configured for `.uasset`, `.umap` and binary art.
+> **No engine project exists yet.** The repo contains only `docs/`,
+> `CLAUDE.md`, and Unity-appropriate `.gitignore` / `.gitattributes` with Git
+> LFS configured for genuine binaries — textures, models, audio — and
+> **not** for scenes, prefabs or scripts.
 >
-> **The UE5 project does not exist yet.** Creating it is the next task, and it
-> must be done on a machine with the Editor installed — a `.uproject` and its
-> module scaffolding cannot be generated from a terminal alone.
+> **Creating the Unity project is the next task.** It needs a machine with
+> Unity 6 installed. Once it exists, most subsequent work — C#, CSVs, even
+> scene blockouts via editor scripts — can be done from a terminal.
 >
 > **Follow `docs/04-technical/bootstrap.md`.** It is a step-by-step runbook
 > with a definition of done and an explicit out-of-scope list.
 
-The archived Unity design document remains at `docs/legacy/` for reference
+The project was on UE5 between commits `165931d` and the **D-015** conversion,
+but no UE project was ever created — that period produced documentation only.
+The archived prototype design document remains at `docs/legacy/` for reference
 only. What was salvaged and what was cut is recorded in
-`docs/04-technical/migration-from-unity.md`.
+`docs/04-technical/prototype-postmortem.md`.
 
 ---
 
 ## 4. Build & test
 
-> **Not yet available.** No UE5 project exists.
+> **Not yet available.** No Unity project exists.
 >
-> Fill this section in as soon as the project builds. It must contain: the
-> build command, the automation-test command, and how to run the editor. AI
+> Fill this section in as soon as the project opens. It must contain: the
+> headless test command, the build command, and how to open the editor —
+> **verified on this machine**, not copied from the runbook templates. AI
 > assistance without a build-and-test signal degrades quickly — this is a
 > priority, not paperwork.
 
 Planned, per `docs/04-technical/technical-design.md` §7:
-- Persistence automation tests are the highest-value tests in the project: a
-  simulated death must provably keep everything marked ● and clear everything
-  marked ○ in the persistence matrix
-- DataTable validation runs in `RegressorEditor`
-- Build + test runnable from a single command
+- Persistence tests are the highest-value tests in the project: a simulated
+  death must provably keep everything marked ● and clear everything marked ○
+  in the persistence matrix. Pure **EditMode** — no scene, fast enough to run
+  on every change
+- Table validation runs in `Regressor.Editor`
+- Tests runnable headless from a single command
+  (`Unity.exe -batchmode -runTests -testPlatform EditMode ...`)
 
 ---
 
 ## 5. Naming conventions
 
-**C++ / UE:** standard Unreal prefixes — `A` actors, `U` UObjects, `F` structs,
-`E` enums, `I` interfaces.
+**C#:** standard .NET conventions — `PascalCase` for types, methods and
+properties, `_camelCase` for private fields. One public type per file, and the
+file name matches the type.
 
-**Modules:** `Regressor<Area>` — see `docs/04-technical/technical-design.md` §4.
+**Assemblies and namespaces:** `Regressor.<Area>` — see
+`docs/04-technical/technical-design.md` §4. The namespace matches the assembly.
 
 **Assets:**
 
 | Prefix | Type |
 |---|---|
-| `BP_` | Blueprint |
-| `IA_` / `IMC_` | Enhanced Input action / mapping context |
-| `GA_` / `GE_` / `GC_` | Gameplay ability / effect / cue |
-| `DT_` | DataTable |
-| `DA_` | Data asset |
-| `AM_` / `ABP_` | Anim montage / Anim Blueprint |
+| `P_` | Prefab |
+| `AB_` / `EF_` | Ability definition / effect definition (ScriptableObject) |
+| `TBL_` | Tuning table imported from CSV |
+| `DA_` | Hand-authored data asset |
+| `M_` | Material |
+| `AC_` | Animator Controller |
+
+Scenes take plain descriptive names, no prefix — `Alley_Anchor`. Input lives in
+one `.inputactions` asset; actions are named inside it rather than as separate
+files.
 
 **Knowledge flags:** `K_<TYPE>_<NAME>` — e.g. `K_LOC_SPIRIT_SPRING`. Types are
 in `docs/02-loop/knowledge-as-key.md`.
@@ -157,8 +177,9 @@ in `docs/02-loop/knowledge-as-key.md`.
 
 ## 7. Current priorities
 
-1. Create the UE5 project skeleton — **follow `docs/04-technical/bootstrap.md`**
-   — and fill in §4 above with verified commands
+1. Create the Unity project skeleton — **follow
+   `docs/04-technical/bootstrap.md`** — and fill in §4 above with verified
+   commands
 2. Save architecture + persistence tests — **before any content**
 3. Loop state machine: anchor → death → interlude → anchor
 4. Vertical slice Act 1 content

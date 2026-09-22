@@ -65,7 +65,7 @@ structure depends on. See the meditation caution in
 (`docs/02-loop/loop-architecture.md`). This is a hard constraint on every
 difficulty curve in the game.
 
-**4. Curves live in DataTables, not code.**
+**4. Curves live in tuning tables, not code.**
 `DT_CultivationCurve`, `DT_EncounterRewards`, `DT_PillEffects`, `DT_DriftSources`.
 CSV-backed so they are tunable and diffable
 (`docs/04-technical/technical-design.md`).

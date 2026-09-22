@@ -155,7 +155,7 @@ Requirements:
 ## Cut from the prototype
 
 Three systems from the archived Unity document are **removed**. Rationale
-recorded here and in `docs/04-technical/migration-from-unity.md`.
+recorded here and in `docs/04-technical/prototype-postmortem.md`.
 
 ### Passive evasion (RNG attack negation) — **CUT**
 

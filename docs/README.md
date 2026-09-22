@@ -1,6 +1,6 @@
 # The Regressor's Path — Design Documentation
 
-A linear, narrative, regression-driven murim RPG for **Unreal Engine 5**.
+A linear, narrative, regression-driven murim RPG for **Unity 6 LTS (URP)**.
 
 > The player dies, returns to a fixed point in the same timeline, and keeps
 > everything they learned. Cultivation resets. Technique and knowledge do not.
@@ -26,7 +26,7 @@ A linear, narrative, regression-driven murim RPG for **Unreal Engine 5**.
 ### 00 — Canon
 | Doc | Contents |
 |---|---|
-| [`decision-log.md`](00-canon/decision-log.md) | Locked decisions D-001 … D-007 |
+| [`decision-log.md`](00-canon/decision-log.md) | Locked decisions D-001 … D-015 |
 | [`glossary.md`](00-canon/glossary.md) | Canonical terms, realm ladder, **banned terms** |
 
 ### 01 — Narrative
@@ -54,9 +54,9 @@ A linear, narrative, regression-driven murim RPG for **Unreal Engine 5**.
 ### 04 — Technical
 | Doc | Contents |
 |---|---|
-| [`technical-design.md`](04-technical/technical-design.md) | UE5 architecture, GAS, saves, DataTables |
-| [`bootstrap.md`](04-technical/bootstrap.md) | **Step-by-step runbook for creating the UE5 project** |
-| [`migration-from-unity.md`](04-technical/migration-from-unity.md) | Salvaged, cut, and reframed |
+| [`technical-design.md`](04-technical/technical-design.md) | Unity architecture, abilities, saves, tuning tables |
+| [`bootstrap.md`](04-technical/bootstrap.md) | **Step-by-step runbook for creating the Unity project** |
+| [`prototype-postmortem.md`](04-technical/prototype-postmortem.md) | Salvaged, cut, and reframed — plus the engine history |
 
 ### 05 — World
 | Doc | Contents |
@@ -72,7 +72,7 @@ A linear, narrative, regression-driven murim RPG for **Unreal Engine 5**.
 ### Legacy
 | Doc | Contents |
 |---|---|
-| [`unity-prototype-notes.md`](legacy/unity-prototype-notes.md) | **Superseded.** Archived Unity prototype doc. Do not build from it |
+| [`unity-prototype-notes.md`](legacy/unity-prototype-notes.md) | **Superseded.** Archived prototype doc. Do not build from it — the engine went back to Unity, the design did not |
 
 ---
 
@@ -113,5 +113,6 @@ A linear, narrative, regression-driven murim RPG for **Unreal Engine 5**.
 | Character voice | Model locked (D-011); coverage budget open (Q-02) |
 | Animation model | **Locked** (D-012); weapon count for v1 open (Q-16) |
 | Progression & economy | **Deferred** (D-004) |
-| Repo migration | **Done** — Unity removed, UE gitignore/gitattributes + LFS in place |
-| UE5 project | **Not started** — next task, follow `04-technical/bootstrap.md` |
+| Engine | **Unity 6 LTS / URP** (D-015). UE5 abandoned — 16GB RAM |
+| Repo config | **Done** — Unity gitignore/gitattributes, LFS for binaries only |
+| Unity project | **Not started** — next task, follow `04-technical/bootstrap.md` |

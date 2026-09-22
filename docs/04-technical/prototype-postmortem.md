@@ -1,15 +1,26 @@
-# Migration from the Unity Prototype
+# Prototype Postmortem
 
-What was salvaged from the abandoned Unity prototype, what was cut, and why.
+What was salvaged from the abandoned prototype, what was cut, and why.
 
 **Source:** `docs/legacy/unity-prototype-notes.md` (the original
 `ProjectSetup.md`, archived verbatim).
+
+> **Read this first.** The project is built in **Unity 6 / URP** (**D-015**),
+> which is the same engine the prototype used. **That does not make the
+> prototype's design usable.** This document is a record of *design* decisions,
+> not engine ones. Every cut listed below still stands, and
+> `docs/legacy/unity-prototype-notes.md` is still superseded.
+>
+> The engine history, for anyone confused by it: prototype in Unity → design
+> reset and a move to UE5 (**D-001**) → back to Unity for hardware reasons
+> (**D-015**). The design reset happened at the first step and has never been
+> undone.
 
 ---
 
 ## Context
 
-An earlier version of this project was built in Unity 6 / URP. The design
+The original prototype was built in Unity 6 / URP. The design
 document for it described a **sandbox brawler test playground**: a scene with
 the player, a camera, and respawning target dummies, plus dev cheats for
 adjusting levels and Qi on the fly.
@@ -34,7 +45,7 @@ code to port, only design.
 
 ## Salvaged
 
-Genuinely good work that carries into the UE5 design.
+Genuinely good work that carries into the current design.
 
 | Element | Where it now lives | Notes |
 |---|---|---|
@@ -81,19 +92,34 @@ Kept in spirit, changed in meaning.
 
 ---
 
-## Repository migration
+## Repository history
 
-**Done.** This repository was converted in place rather than restarted, which
-resolves Q-17.
+The repository has been converted in place twice rather than restarted, which
+resolved Q-17 and then Q-21.
+
+**First conversion — off the prototype, onto UE5 (D-001), commit `165931d`:**
 
 | Step | Status |
 |---|---|
-| Delete Unity scaffolding — `Assets/`, `ProjectSettings/`, `Packages/`, `.vscode/`, `RPG Idea.slnx` | **Done** |
-| Replace `.gitignore` / `.gitattributes` with UE versions, Git LFS for `.uasset`, `.umap` and binary art | **Done** |
+| Delete prototype scaffolding — `Assets/`, `ProjectSettings/`, `Packages/`, `.vscode/`, `RPG Idea.slnx` | **Done** |
+| Replace `.gitignore` / `.gitattributes` with UE versions | **Done** |
 | Keep `docs/` unchanged | **Done** |
-| Create the UE5 project skeleton | **Next** — see `docs/04-technical/bootstrap.md` |
+| Create the UE5 project skeleton | **Never completed** — the Editor would not run in 16GB |
+
+**Second conversion — back to Unity (D-015):**
+
+| Step | Status |
+|---|---|
+| Supersede D-001 with D-015 in the decision log | **Done** |
+| Rewrite `technical-design.md` and `bootstrap.md` for Unity | **Done** |
+| Replace `.gitignore` / `.gitattributes` with Unity versions, LFS for real binaries only | **Done** |
+| Update `CLAUDE.md` engine rules and naming conventions | **Done** |
+| Create the Unity project skeleton | **Next** — see `docs/04-technical/bootstrap.md` |
 | Record verified build/test commands in `CLAUDE.md` §4 | Part of bootstrap |
 
-Nothing of value was lost: the Unity project contained no gameplay code, its
-design document is archived at `docs/legacy/unity-prototype-notes.md`, and the
-full Unity tree remains recoverable from git history at commit `cd9ecf6`.
+Nothing of value was lost in either conversion. The prototype contained no
+gameplay code, its design document is archived at
+`docs/legacy/unity-prototype-notes.md`, and the full original tree remains
+recoverable from git history at commit `cd9ecf6`. The UE5 period produced
+documentation only — no engine project was ever created — so the move back to
+Unity discards no code either.

@@ -253,9 +253,10 @@ Pill alignment checks against **current drift**, not a locked constitution
 ## Implementation notes
 
 - Two floats on `SoulSave` (`docs/02-loop/persistence-matrix.md`)
-- Drift sources are DataTable-driven (`DT_DriftSources`) — each row carries a
+- Drift sources are table-driven (`TBL_DriftSources`) — each row carries a
   drift delta and a conviction delta
 - Band thresholds are data, not constants
 - Expose to content as a **band enum** (`Path_Sapa_Devoted`), never raw floats
-- If GAS is adopted, bands are Gameplay Tags (`Path.Sapa.Devoted`) so ability
-  requirements stay declarative
+- Bands surface as **tags** on the ability layer (`Path.Sapa.Devoted`) so
+  ability requirements stay declarative rather than conditional
+  (`docs/04-technical/technical-design.md` §2)

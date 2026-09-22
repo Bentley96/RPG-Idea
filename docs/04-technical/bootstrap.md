@@ -1,13 +1,18 @@
-# Bootstrap Runbook — Creating the UE5 Project
+# Bootstrap Runbook — Creating the Unity Project
 
-**Audience:** whoever creates the Unreal project, human or AI-assisted, on a
-machine with UE5 and the Editor installed.
+**Audience:** whoever creates the Unity project, human or AI-assisted, on a
+machine with Unity installed.
 
 **Read first:** `CLAUDE.md` at the repo root, then
 `docs/04-technical/technical-design.md`. This runbook assumes both.
 
-**Goal:** a project that builds, runs, has one greybox level you can walk
+**Goal:** a project that opens, runs, has one greybox level you can walk
 around in, and has its build and test commands recorded. Nothing more.
+
+> **This replaces the UE5 bootstrap runbook**, which was never completed — the
+> UE5 Editor is not workable in this machine's 16GB of RAM (**D-015**). Unity
+> is, and a much larger share of what follows can be done from a terminal
+> rather than by hand in the Editor.
 
 ---
 
@@ -15,23 +20,28 @@ around in, and has its build and test commands recorded. Nothing more.
 
 | | |
 |---|---|
-| Unreal Engine | Whatever version is installed. **5.5+** preferred (StateTree). Record the exact version in `CLAUDE.md` §4 |
-| Visual Studio / Xcode | With C++ game development workload |
+| Unity | **Unity 6 LTS** (6000.x). Install via Unity Hub. Record the exact version in `CLAUDE.md` §4 |
+| Render pipeline | **URP.** Not HDRP — it is heavier than this machine or this art direction wants |
+| IDE | Visual Studio, Rider, or VS Code with the C# extension |
 | Git LFS | `git lfs install` — run once per machine |
 | This repo | Cloned, on `main` |
+
+> **Keep the install lean.** On 16GB, the Editor's footprint is the budget that
+> matters. Install one Editor version, skip build-support modules you are not
+> targeting, and do not import large sample or demo content.
 
 ---
 
 ## Step 1 — Confirm the repo is clean
 
-The Unity scaffolding has already been removed and UE-appropriate
-`.gitignore` / `.gitattributes` are committed. The repo should contain only:
+The UE5-era `.gitignore` / `.gitattributes` have been replaced with Unity
+versions. The repo should contain only:
 
 ```
 .gitignore   .gitattributes   CLAUDE.md   docs/
 ```
 
-If `Assets/`, `ProjectSettings/` or `Packages/` are present, the pull is stale.
+If `Source/`, `Content/` or a `.uproject` are present, the pull is stale.
 
 Run `git lfs install` before adding any binary assets.
 
@@ -39,86 +49,98 @@ Run `git lfs install` before adding any binary assets.
 
 ## Step 2 — Create the project
 
-**Template: Third Person, C++, no Starter Content.**
+**Template: Universal 3D.** Create it **at the repo root**, so `Assets/` sits
+beside `docs/`.
 
-| Setting | Value |
-|---|---|
-| Template | **Third Person** |
-| Implementation | **C++** (not Blueprint) |
-| Target platform | Desktop |
-| Quality | Maximum |
-| Starter Content | **No** |
-| Raytracing | Off |
-| **Project name** | `Regressor` |
-| **Location** | The repo root, so `Regressor.uproject` sits beside `docs/` |
+Via Unity Hub: New Project → Universal 3D → set the location to the repo root
+and the name so that it resolves there. From the command line:
 
-### Why Third Person and not Blank
+```
+Unity.exe -createProject "<REPO>" -batchmode -quit
+```
 
-The template supplies a working `ACharacter` with movement, a spring-arm
-camera, and **Enhanced Input already wired** (`IMC_Default`, `IA_Move`,
-`IA_Look`, `IA_Jump`), plus the Manny/Quinn mannequin and its animation set.
-That is several days of scaffolding that matches what this game needs anyway,
-and the mannequin is a serviceable placeholder for the unarmed base moveset
-(**D-012**) later.
+Then add **Starter Assets: ThirdPerson** from the Package Manager
+(Unity Registry, free, published by Unity).
 
-Blank would mean rebuilding all of it for no benefit.
+### Why Starter Assets and not an empty scene
 
-> The template's character class will be renamed and moved during later work.
-> Do not restructure it in this step — get it building and running first.
+It supplies a working third-person `CharacterController`, a **Cinemachine**
+camera rig, and the **Input System** already wired with an `.inputactions`
+asset and a generated input class. That is several days of scaffolding this
+game needs anyway, and its capsule/armature is a serviceable placeholder for
+the unarmed base moveset (**D-012**) later.
 
----
+This is the same reasoning the UE5 runbook used for the Third Person template.
+Building it from scratch would mean rebuilding all of it for no benefit.
 
-## Step 3 — Modules
-
-The TDD (`technical-design.md` §4) lists seven modules. **Do not create all
-seven now.** Empty modules are overhead and obscure where code actually lives.
-
-Create **two**:
-
-| Module | Purpose |
-|---|---|
-| `Regressor` | Primary game module. Created by the template |
-| `RegressorCore` | Loop state machine, save objects, persistence rules |
-
-`RegressorCore` comes first because priority 2 is the save architecture, and
-because it owns the persistence contract every other module depends on.
-
-Add the remaining modules when there is code for them, not before.
+> The starter character class will be renamed and moved during later work. Do
+> not restructure it in this step — get it opening and running first.
 
 ---
 
-## Step 4 — Content layout
+## Step 3 — Project settings that must be set before the first asset
 
-Everything under a single project root folder, so marketplace and plugin
+These three are painful to retrofit. Set them now.
+
+| Setting | Value | Where |
+|---|---|---|
+| **Asset Serialization** | **Force Text** | Project Settings → Editor |
+| **Visible Meta Files** | On | Project Settings → Editor |
+| **Company / Product Name** | Your choice / `Regressor` | Project Settings → Player |
+
+Then configure **UnityYAMLMerge** as the git merge driver for `.unity` and
+`.prefab`. Unity ships the tool with the Editor; wiring it up now turns scene
+conflicts from unresolvable into routine.
+
+Add the **Newtonsoft JSON** package (`com.unity.nuget.newtonsoft-json`) — the
+save layer needs it (`technical-design.md` §3).
+
+---
+
+## Step 4 — Assemblies and folder layout
+
+Everything under a single project root folder, so package and asset-store
 content can never collide with ours:
 
 ```
-Content/
-└── Regressor/
-    ├── Characters/
-    ├── Input/
-    ├── Levels/
-    ├── Data/          <- imported DataTables
-    ├── UI/
-    └── VFX/
+Assets/Regressor/
+├── Scripts/
+│   ├── Core/        <- Regressor.Core.asmdef
+│   └── Editor/      <- Regressor.Editor.asmdef
+├── Prefabs/
+├── Scenes/
+├── Data/            <- imported ScriptableObjects
+├── Input/
+├── UI/
+├── VFX/
+└── Art/
 ```
 
-Move the template's assets into `Content/Regressor/` and fix up redirectors.
+Create **two** assembly definitions now — `Regressor.Core` and
+`Regressor.Editor` — not all seven from the TDD. `Regressor.Core` comes first
+because the save architecture is the next priority and it owns the persistence
+contract every other assembly depends on. Add the rest when there is code for
+them, not before.
+
+Move the Starter Assets content into `Assets/Regressor/` where it makes sense,
+or leave it in place for now and move it when the character work starts —
+either is fine, but decide and be consistent.
 
 ### CSV source of truth
 
-DataTables are **imported from CSVs that live outside `Content/`**, as text:
+Tuning tables are **imported from CSVs that live outside `Assets/`**, as text:
 
 ```
 Data/CSV/          <- repo root. The source of truth. Diffable, AI-editable
-   DT_KnowledgeFlags.csv
-   DT_Techniques.csv
+   KnowledgeFlags.csv
+   Techniques.csv
    ...
 ```
 
-Import these into `Content/Regressor/Data/`. When a value changes, the **CSV**
-is edited and re-imported — never the `.uasset` directly. This is what makes
-tuning reviewable and AI-assistable (`CLAUDE.md`, Engine rules).
+Import these into `Assets/Regressor/Data/` as ScriptableObjects. When a value
+changes, the **CSV** is edited and re-imported — never the `.asset` directly.
+This is what makes tuning reviewable and AI-assistable (`CLAUDE.md`, Engine
+rules).
 
 Create `Data/CSV/` now, even if empty, with a `.gitkeep`.
 
@@ -130,36 +152,44 @@ Create `Data/CSV/` now, even if empty, with a `.gitkeep`.
 currently a placeholder. Fill it in with the real, verified commands for this
 machine. AI assistance without a build-and-test signal degrades quickly.
 
-Templates — substitute the real engine path and verify each one actually runs:
+Templates — substitute the real Editor path and **verify each one actually
+runs** before recording it:
 
-**Build (Windows):**
+**Run EditMode tests headless:**
 ```
-"<UE_ROOT>\Engine\Build\BatchFiles\Build.bat" RegressorEditor Win64 Development -Project="<REPO>\Regressor.uproject" -WaitMutex -FromMsBuild
-```
-
-**Regenerate project files:**
-```
-"<UE_ROOT>\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.exe" -projectfiles -project="<REPO>\Regressor.uproject" -game -rocket -progress
+"<UNITY>\Unity.exe" -batchmode -projectPath "<REPO>" -runTests -testPlatform EditMode -testResults "<REPO>\TestResults.xml" -logFile -
 ```
 
-**Run automation tests headless:**
+**Run PlayMode tests headless:**
 ```
-"<UE_ROOT>\Engine\Binaries\Win64\UnrealEditor-Cmd.exe" "<REPO>\Regressor.uproject" -ExecCmds="Automation RunTests Regressor;Quit" -unattended -nopause -nosplash -testexit="Automation Test Queue Empty" -log
+"<UNITY>\Unity.exe" -batchmode -projectPath "<REPO>" -runTests -testPlatform PlayMode -testResults "<REPO>\TestResults.xml" -logFile -
+```
+
+**Build a player** (requires a small `BuildScript` with a static method):
+```
+"<UNITY>\Unity.exe" -batchmode -quit -projectPath "<REPO>" -executeMethod Regressor.Editor.BuildScript.Build -logFile -
 ```
 
 **Open the editor:**
 ```
-"<UE_ROOT>\Engine\Binaries\Win64\UnrealEditor.exe" "<REPO>\Regressor.uproject"
+"<UNITY>\Unity.exe" -projectPath "<REPO>"
 ```
 
+Where `<UNITY>` is typically
+`C:\Program Files\Unity\Hub\Editor\<version>\Editor`.
+
+`-runTests` exits on its own; do not combine it with `-quit`. Note that
+batchmode holds the project lock, so the Editor cannot be open at the same
+time.
+
 Replace the whole placeholder block in `CLAUDE.md` §4 with the verified
-versions, and update §3 to say the UE5 project now exists.
+versions, and update §3 to say the Unity project now exists.
 
 ---
 
 ## Step 6 — First level: the alley
 
-**`Content/Regressor/Levels/L_Alley_Anchor`**
+**`Assets/Regressor/Scenes/Alley_Anchor.unity`**
 
 Not a generic test box. This is **Act 1's anchor** — the alley where the
 bullies are, the place every regression returns to, and the location the whole
@@ -176,28 +206,35 @@ Blockout only. Twenty minutes of dragging shapes, not an art pass.
 | Two long walls | Forming a narrow alley — the space should feel confined |
 | Dead end | One end closed. The orphan has nowhere to run |
 | Crates / clutter | A handful of cubes for cover and scale reference |
-| PlayerStart | At the open end |
-| Lighting | Directional Light + SkyAtmosphere + SkyLight. Keep it simple |
+| Spawn point | At the open end |
+| Lighting | One Directional Light plus the URP default sky. Keep it simple |
 
 ### Low-poly look, cheaply
 
-Make one **flat-colour master material** (an unlit or minimally-lit constant
-with a `BaseColour` vector parameter), then create material instances per
-surface — walls, ground, crates. Flat shading over simple geometry reads as a
-deliberate low-poly style rather than as unfinished greybox, and it costs
-almost nothing.
+Make one **flat-colour URP material** with a `BaseColor` property, then create
+material variants per surface — walls, ground, crates. Flat shading over simple
+geometry reads as a deliberate low-poly style rather than as unfinished
+greybox, and it costs almost nothing.
+
+### Build it from a script, not by hand
+
+> **This is where Unity pays off over UE5.** `.unity` is YAML, not a binary
+> blob, so a blockout is reviewable in a diff. Better still, write a small
+> **editor script** — a `[MenuItem]` in `Regressor.Editor` that places the
+> geometry — and check *that* in. The script becomes the source of truth, the
+> scene becomes a regenerable artefact, and the blockout can be edited,
+> reviewed and improved from a terminal by AI assistance without ever opening
+> the Editor.
+>
+> Building it by hand in the Editor is perfectly acceptable for a first pass.
+> But the script route is cheap here in a way it never was in Unreal, and it is
+> the recommended one.
 
 ### Verification
 
-Launch, walk around the alley with the template character, confirm collision
-works and nothing falls through the floor. That is the whole bar for this step.
-
-> **Note for AI assistance:** `.umap` and `.uasset` are binary and cannot be
-> authored from a terminal. The level must be built in the Editor by hand.
-> If repeatable, diffable blockouts become useful later, enable the **Python
-> Editor Script Plugin** and generate levels from a checked-in `.py` script —
-> the script becomes the source of truth and the `.umap` a build artefact.
-> Not needed for the first scene.
+Enter Play mode, walk around the alley with the starter character, confirm
+collision works and nothing falls through the floor. That is the whole bar for
+this step.
 
 ---
 
@@ -205,27 +242,32 @@ works and nothing falls through the floor. That is the whole bar for this step.
 
 ```
 git add -A
-git commit -m "Add UE5 project skeleton and alley blockout"
+git commit -m "Add Unity project skeleton and alley blockout"
 git push -u origin main
 ```
 
-Verify LFS caught the binaries: `git lfs ls-files` should list the `.umap` and
-any `.uasset` files. If it is empty, `.gitattributes` was not applied before
-the add — fix it before pushing, because retrofitting LFS is painful.
+Check that LFS caught only what it should: `git lfs ls-files` should list
+textures, models and audio — and should **not** list `.unity`, `.prefab`,
+`.asset` or `.cs`. If scenes are in LFS, `.gitattributes` is wrong; fix it
+before pushing, because retrofitting LFS is painful.
+
+Confirm `.meta` files are committed. A missing `.meta` silently breaks asset
+references for everyone but you.
 
 ---
 
 ## Definition of done
 
-- [ ] Project builds from the command line, not just the Editor
-- [ ] Editor opens the project without errors
-- [ ] `L_Alley_Anchor` is walkable, collision works
-- [ ] `Content/Regressor/` layout in place, template assets moved
+- [ ] Project opens in the Editor without errors
+- [ ] EditMode tests run headless from the command line
+- [ ] `Alley_Anchor` is walkable, collision works
+- [ ] `Assets/Regressor/` layout in place
+- [ ] `Regressor.Core` and `Regressor.Editor` assemblies exist and compile
 - [ ] `Data/CSV/` exists
-- [ ] `RegressorCore` module exists and compiles, even if empty
+- [ ] Asset Serialization is **Force Text**; UnityYAMLMerge configured
 - [ ] `CLAUDE.md` §4 has **verified** build, test and editor commands
 - [ ] `CLAUDE.md` §3 updated — the project now exists
-- [ ] `git lfs ls-files` lists binary assets
+- [ ] `git lfs ls-files` lists binaries only, no scenes or scripts
 - [ ] Pushed to `main`
 
 ---
@@ -236,11 +278,11 @@ Do **not** build these during bootstrap. Each is gated or sequenced elsewhere.
 
 | Not now | Why |
 |---|---|
-| GAS setup | Gated on the vertical slice (Q-05) |
+| The ability and attribute layer | Gated on the vertical slice (Q-05) |
 | Combat, posture, parry | Comes after the save architecture |
 | Save/persistence code | The next task, not this one |
-| The other five modules | Add when there is code for them |
-| Enemies, AI, StateTree | Later in the slice |
+| The other five assemblies | Add when there is code for them |
+| Enemies, AI, behaviour graphs | Later in the slice |
 | Weapons, styles, pills, breakthroughs | Not in the slice at all (`CLAUDE.md` §6) |
 | Art, animation, audio passes | Blockout only |
 
@@ -252,10 +294,13 @@ Per `CLAUDE.md` §7, once this runbook is complete:
 
 1. **Save architecture** — `SoulSave` / `LifeSave` / `WorldSave`, shaped to
    match `docs/02-loop/persistence-matrix.md`
-2. **Persistence automation tests** — a simulated death must provably keep
-   everything marked ● and clear everything marked ○. The highest-value test
-   in the project
+2. **Persistence tests** — a simulated death must provably keep everything
+   marked ● and clear everything marked ○. The highest-value test in the
+   project, and a pure EditMode test that needs no scene
 3. **Loop state machine** — anchor → death → interlude → anchor
 
 Steps 1 and 2 come before any content. The persistence rules *are* the game;
 building content on an unproven loop means rebuilding the content.
+
+All three are pure C#, which means they can be written, tested and reviewed
+without opening the Editor.

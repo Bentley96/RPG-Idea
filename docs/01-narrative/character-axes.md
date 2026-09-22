@@ -182,7 +182,7 @@ feel it and caps the writing budget at roughly 3× rather than 12×.
 
 - Both axes live on `SoulSave`
 - Expose as a **quadrant enum** to content systems, not raw floats — writers
-  and DataTables should key off `Jaded_Confident`, not `jadedness > 0.62`
+  and tuning tables should key off `Jaded_Confident`, not `jadedness > 0.62`
 - Quadrant thresholds are data, not constants
 - Axis state must be queryable by the dialogue system, narration, and any
   content-generation tooling

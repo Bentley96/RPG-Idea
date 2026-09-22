@@ -1,25 +1,50 @@
-# Unreal Engine
+# Unity 6
 
-# Build artefacts and caches — never committed
-Binaries/
-DerivedDataCache/
-Intermediate/
-Saved/
-Build/
-!Build/*/Resources/
+# Editor-generated folders — never committed
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+[Rr]ecordings/
 
-# Generated IDE / solution files
+# Asset Store and package caches
+[Aa]ssets/AssetStoreTools*
+[Aa]ssets/Plugins/Editor/JetBrains*
+
+# Generated IDE / solution files — Unity regenerates these
 .vs/
 .idea/
 .vscode/
+.gradle/
+*.csproj
+*.unityproj
 *.sln
 *.suo
-*.opensdf
-*.sdf
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
 *.VC.db
-*.VC.opendb
-*.xcodeproj
-*.xcworkspace
+
+# Crash reports and build artefacts
+sysinfo.txt
+*.apk
+*.aab
+*.unitypackage
+*.app
+crashlytics-build.properties
+
+# Test output
+[Tt]est[Rr]esults.xml
 
 # OS cruft
 .DS_Store
@@ -27,3 +52,6 @@ Thumbs.db
 
 # Local-only config
 *.local.json
+
+# Never ignore .meta files — a missing .meta silently breaks references
+!*.meta

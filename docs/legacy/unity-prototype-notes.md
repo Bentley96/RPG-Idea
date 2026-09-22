@@ -5,20 +5,31 @@
 > This is the original `ProjectSetup.md` from the abandoned Unity 6 / URP
 > prototype, preserved verbatim below for reference only.
 >
-> It is wrong on two axes:
+> **The project is on Unity again (D-015), and that changes nothing about this
+> document.** Read the next paragraph before you get any ideas.
 >
-> 1. **Wrong engine.** It describes Unity C# MonoBehaviours, the Unity Input
->    System, and a Unity asset layout. The project has moved to Unreal Engine 5.
-> 2. **Wrong genre.** It describes a sandbox brawler test playground —
->    respawning target dummies, MMO grind XP, dev cheat buttons, level-adjust
->    hotkeys. The actual game is a **linear, narrative, regression-driven RPG**.
+> This was once wrong on two axes — engine and genre. The engine axis has
+> lapsed: the project moved to Unreal Engine 5 (**D-001**) and then back to
+> Unity 6 for hardware reasons (**D-015**), so the C# MonoBehaviours and Unity
+> asset layout described below are no longer the wrong toolchain. **The axis
+> that actually mattered is untouched:**
+>
+> **Wrong genre.** It describes a sandbox brawler test playground — respawning
+> target dummies, MMO grind XP, dev cheat buttons, level-adjust hotkeys. The
+> actual game is a **linear, narrative, regression-driven RPG**.
+>
+> Its specific design proposals were rejected on their merits and remain
+> rejected: permanent compounding stat multipliers (**D-007**), passive evasion
+> RNG (**D-014**), the locked constitution choice (**D-006**), level-difference
+> auras, and grind XP. None of those were engine problems. Returning to Unity
+> rehabilitates the toolchain, not the design.
 >
 > It also uses **"reincarnation"** framing throughout. That framing was an
 > artefact of AI-assisted respawn testing in Unity and is **not canon**. The
 > canonical framing is **regression** — see `docs/00-canon/glossary.md`.
 >
 > For what was salvaged from this document and what was cut, see
-> `docs/04-technical/migration-from-unity.md`.
+> `docs/04-technical/prototype-postmortem.md`.
 
 ---
 

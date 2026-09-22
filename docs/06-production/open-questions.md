@@ -7,13 +7,14 @@ When one is settled, add an entry to `docs/00-canon/decision-log.md` and remove
 it from here.
 
 **Recently resolved:** Q-01 anchor advance → **D-010** · Q-11 unaligned ending
-→ **D-009** (conviction axis, four endings) · Q-12 mentor rank → **D-008**
+→ **D-009** (conviction axis, four endings) · Q-21 engine → **D-015** (Unity 6 / URP;
+UE5 abandoned on 16GB RAM) · Q-12 mentor rank → **D-008**
 (Core Refinement, Tier III) · Q-02 delivery model → **D-011** (budget still
 open below) · Q-16 animation model → **D-012** (narrowed to weapon count) ·
 Q-18 anchor placement → **D-013** (one per act boundary, three acts) · Q-03
 posture → **D-014** (hidden, escalating, deterministic) · Q-17 repository
-migration → converted in place; Unity scaffolding removed, UE `.gitignore` /
-`.gitattributes` with LFS committed.
+migration → converted in place (and converted again for **D-015**; see
+`docs/04-technical/prototype-postmortem.md` for the full history).
 
 ---
 
@@ -69,10 +70,22 @@ reintroduce exactly the resource-management play D-014 exists to avoid.
 
 Needs the vertical slice to answer.
 
-### Q-05 — Final GAS commitment
+### Q-05 — Ability system: hand-rolled, or a third-party dependency
 **Doc:** `docs/04-technical/technical-design.md` §2
-Recommended, with a migration-safe fallback for the slice. Decide once the
-slice's combat exists.
+
+**Reframed by D-015.** This was "do we adopt GAS". Unity has no GAS, so that
+question is void and the TDD's migration-safe fallback — a thin, data-driven
+attribute/ability/tag layer owned by this project — becomes the plan by
+default.
+
+What remains open is narrower: whether to take a **third-party ability-system
+package** as a dependency instead of hand-rolling. Arguments both ways are
+real, and neither can be settled from a document. Decide once the slice's
+combat exists and the actual shape of the requirement is visible — not before.
+
+The hard requirement either way: proficiency locks stay **declarative**. If
+gating degenerates into conditionals scattered through ability code, the
+system has failed its one job.
 
 ### Q-06 — All progression and economy numbers
 **Doc:** `docs/03-systems/progression-economy.md` — deferred per **D-004**
