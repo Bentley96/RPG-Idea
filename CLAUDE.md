@@ -1,4 +1,19 @@
-# CLAUDE.md — AI Working Agreement
+# CLAUDE.md — SUPERSEDED
+
+> **STOP. This repository is not the project.**
+>
+> *The Regressor's Path* moved to **`Bentley96/Murim`**, which holds both the
+> Unity 6 project and `docs/`. The full history of this repository was merged
+> there, so nothing is lost and nothing here is newer.
+>
+> **Do not make changes in this repository.** Work in `Bentley96/Murim`, and
+> read its `CLAUDE.md`, which is the live version of the agreement below.
+>
+> The text that follows is kept only for reference and is frozen.
+
+---
+
+# CLAUDE.md — AI Working Agreement (frozen copy)
 
 Read this before any task in this repository.
 
